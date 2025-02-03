@@ -1,0 +1,197 @@
+/* Basic styling for all pages */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.logo {
+    max-width: 200px;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1, h2, h3 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.options, .service-grid, .cost-section, .adjustment-section, .earnings-section {
+    margin-bottom: 30px;
+}
+
+.option-item {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.option-item label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.option-item select, .option-item input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.service-item {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fafafa;
+}
+
+.service-item img {
+    max-width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.service-item p {
+    font-weight: bold;
+}
+
+.service-item input {
+    width: 60px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.cost-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cost-table {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+    width: 48%;
+    margin-bottom: 20px;
+}
+
+.cost-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.total-cost {
+    font-weight: bold;
+    text-align: right;
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+.adjustment-section, .earnings-section {
+    text-align: center;
+}
+
+.cost-input {
+    width: 80px;
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 30px;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.editable {
+    border-bottom: 1px dashed #ccc;
+    cursor: pointer;
+}
+
+.customer-details {
+    margin-top: 40px;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    display: none; /* Hidden by default, shown on click */
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.info-item label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.info-item input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.scrollable-container {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.scrollable-container .row {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.scrollable-container .col-md-6 {
+    flex: 0 0 auto; /* Prevent columns from shrinking */
+    width: 200px; /* Adjust as needed */
+}

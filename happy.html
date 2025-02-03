@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Summary</title>
+    <link rel="stylesheet" href="cappy.css">
+</head>
+<body>
+    <div class="container">
+        <img src="company logo.png" alt="Company Logo" class="logo">
+        <h1>Quote Summary</h1>
+
+        <!-- Product Summary -->
+        <div class="summary-grid">
+            <!-- Summarized products with quantities -->
+            <div class="summary-item" id="item-yealink-w79p">
+                <img src="W79P RUGGED (1).webp" alt="Yealink W79P Rugged">
+                <p>Yealink W79P Rugged</p>
+                <p>Qty: <span id="summary-yealink-w79p">0</span></p>
+            </div>
+
+            <div class="summary-item" id="item-yealink-t54">
+                <img src="t54w.jpg" alt="Yealink T54">
+                <p>Yealink T54</p>
+                <p>Qty: <span id="summary-yealink-t54">0</span></p>
+            </div>
+
+            <div class="summary-item" id="item-yealink-t57">
+                <img src="t57w.jpg" alt="Yealink T57">
+                <p>Yealink T57</p>
+                <p>Qty: <span id="summary-yealink-t57">0</span></p>
+            </div>
+
+            <div class="summary-item" id="item-grandstream-gvx">
+                <img src="gvx.webp" alt="Grandstream GVX">
+                <p>Grandstream GVX</p>
+                <p>Qty: <span id="summary-grandstream-gvx">0</span></p>
+            </div>
+
+            <!-- Additional services -->
+            <div class="summary-item">
+                <img src="auto attendant.PNG" alt="Auto Attendant">
+                <p>Auto Attendant</p>
+                <p>Qty: 1</p>
+            </div>
+
+            <div class="summary-item">
+                <img src="on hold marketing.PNG" alt="OHM">
+                <p>OHM</p>
+                <p>Qty: 1</p>
+            </div>
+
+            <div class="summary-item">
+                <img src="call recording.PNG" alt="Call Recording">
+                <p>Call Recording</p>
+                <p>Qty: 1</p>
+            </div>
+
+            <div class="summary-item">
+                <img src="system user licenece.PNG" alt="System User Licenses">
+                <p>System User Licenses</p>
+                <p>Qty: <span id="summary-system-user-licenses">0</span></p>
+            </div>
+        </div>
+
+        <!-- Costs Summary -->
+        <div class="cost-section">
+            <!-- Old Costs Summary -->
+            <div class="cost-table">
+                <h3>Old Costs</h3>
+                <div class="cost-item">
+                    <span>Existing Call Charges</span>
+                    <span>£<span id="summary-old-call-charges">0.00</span></span>
+                </div>
+                <div class="cost-item">
+                    <span>Existing Equipment Rental</span>
+                    <span>£<span id="summary-old-equipment-rental">0.00</span></span>
+                </div>
+                <div class="cost-item">
+                    <span>Existing Service Charges</span>
+                    <span>£<span id="summary-old-service-charges">0.00</span></span>
+                </div>
+                <div class="cost-item">
+                    <span>Other Costs</span>
+                    <span>£<span id="summary-old-other-costs">0.00</span></span>
+                </div>
+                <div class="cost-item">
+                    <span>Current Mobile Costs</span>
+                    <span>£<span id="summary-old-mobile-costs">0.00</span></span>
+                </div>
+                <div class="cost-item">
+                    <span>Current Leaseline Costs</span>
+                    <span>£<span id="summary-old-leaseline-costs">0.00</span></span>
+                </div>
+                <div class="total-cost">
+                    Total Old Cost: £<span id="summary-total-old-cost">0.00</span>
+                </div>
+            </div>
+
+            <!-- Future Costs Summary -->
+            <div class="cost-table">
+                <h3>Future Costs</h3>
+                <div class="cost-item">
+                    <span>Estimated Call Charges</span>
+                    <span>£<span id="summary-estimated-call-charges">0.00</span></span>
+                </div>
+                <div class="cost-item">
+                    <span>New System Rental</span>
+                    <span>£<span id="summary-new-system-rental">0.00</span></span>
+                </div>
+                <div class="cost-item">
+                    <span>New Service Charges</span>
+                    <span>£<span id="summary-new-service-charges">0.00</span></span>
+                </div>
+                <div class="cost-item">
+                    <span>Network Service Rebate for 18 Months</span>
+                    <span>-£<span id="summary-network-rebate">0.00</span></span>
+                </div>
+                <div class="cost-item">
+                    <span>Estimated Mobile Charges</span>
+                    <span>£<span id="summary-estimated-mobile-charges">0.00</span></span>
+                </div>
+                <div class="cost-item">
+                    <span>Lease Line</span>
+                    <span>£<span id="summary-lease-line">0.00</span></span>
+                </div>
+                <div class="total-cost">
+                    Total Future Cost: £<span id="summary-total-future-cost">0.00</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Proceed Button -->
+        <div class="button" onclick="proceedToCustomerInfo()">LET'S GO!</div>
+    </div>
+
+    <script src="javvy.js"></script>
+</body>
+</html>
