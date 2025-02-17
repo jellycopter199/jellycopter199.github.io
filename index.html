@@ -2,967 +2,985 @@
 <html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script src="https://cdn.jsdelivr.net/npm/pdf-lib"></script>
-    <script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quotation System</title>
-    <link rel="stylesheet" href="two.css">
-    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-        <style>
-            .service-grid {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 20px;
-            }
-    
-            .service-item {
-                width: 200px;
-                text-align: center;
-            }
-    
-            .page {
-                display: none; /* Hide by default */
-            }
-    
-            .active {
-                display: flex; /* Show active page */
-            }
-    
-            button {
-                margin-top: 20px;
-            }
-        </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script src="https://cdn.jsdelivr.net/npm/pdf-lib"></script>
+  <script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quotation System</title>
+  <link rel="stylesheet" href="two.css">
+  <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <style>
+    .service-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .service-item {
+      width: 200px;
+      text-align: center;
+    }
+
+    .page {
+      display: none;
+      /* Hide by default */
+    }
+
+    .active {
+      display: flex;
+      /* Show active page */
+    }
+
+    button {
+      margin-top: 20px;
+    }
+  </style>
 
 </head>
 
 <body>
-    <div class="container" id="nipper">
-        <img src="./company logo.png" alt="Company Logo" class="logo">
-        <h1>Product Quotation</h1>
+  <div class="container" id="nipper">
+    <img src="./company logo.png" alt="Company Logo" class="logo">
+    <h1>Product Quotation</h1>
 
-        <!-- Customer Information -->
-        <div class="container mt-4" id="test">
-            <h2 class="mb-4">Company Information</h2>
-            <form>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="company-name" class="form-label">Registered Company Name</label>
-                        <input type="text" class="form-control" id="company-name">
-                    </div>
+    <!-- Customer Information -->
+    <div class="container mt-4" id="test">
+      <h2 class="mb-4">Company Information</h2>
+      <form>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="company-name" class="form-label">Registered Company Name</label>
+            <input type="text" class="form-control" id="company-name">
+          </div>
 
-                    <div class="col-md-6 mb-3">
-                        <label for="address-1" class="form-label">Address 1</label>
-                        <input type="text" class="form-control" id="address-1">
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="address-2" class="form-label">Address 2</label>
-                        <input type="text" class="form-control" id="address-2">
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="postcode" class="form-label">Postcode</label>
-                        <input type="text" class="form-control" id="postcode">
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="town" class="form-label">Town</label>
-                        <input type="text" class="form-control" id="town">
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="company-registration" class="form-label">Company Registration No.</label>
-                        <input type="text" class="form-control" id="company-registration">
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="phone-number" class="form-label">Business Phone</label>
-                        <input type="text" class="form-control" id="business-phone">
-                    </div>
-                    <div class="col-md-6 d-flex flex-row align-items-center">
-                        <label for="num-of-employees" class="form-label">Num of Employees</label>
-                        &nbsp;
-                        <input style="width:34%;height: 50%;" type="text" class="form-control" id="num-of-employees">
-                        &nbsp;
-                        &nbsp;
-                        <label for="company-status" class="form-label">Status</label>
-                        &nbsp;
-                        &nbsp;
-                        <select id="company-status" onchange="updateCosts()">
-                            <option value="LTD">LTD</option>
-                            <option value="Limited">Limited</option>
-                        </select>
-                    </div>
-                    <h2 class="mb-4">Banking Information</h2>
-                    <div class="col-md-6 mb-3">
-                        <label for="account-number" class="form-label">Account Number</label>
-                        <input type="text" class="form-control" id="account-number">
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="sort-code" class="form-label">Sort Code</label>
-                        <input type="text" class="form-control" id="sort-code">
-                    </div>
-                    <h2 class="mb-4">Contact Information</h2>
-                    <div class="col-md-6 mb-3">
-                        <label for="prename" class="form-label">Prename</label>
-                        <select class="form-select" id="prename">
-                            <option value="Mr">Mr</option>
-                            <option value="Miss">Miss</option>
-                            <option value="Mrs">Mrs</option>
-                            <option value="Ms">Mrs</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="contact-name" class="form-label">Contact Name</label>
-                        <input type="text" class="form-control" id="contact-name">
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="position" class="form-label">Position</label>
-                        <input type="text" class="form-control" id="position">
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="mobile-number" class="form-label">Mobile Number</label>
-                        <input type="text" class="form-control" id="mobile-number">
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="director-email" class="form-label">Director's Email Address</label>
-                        <input type="email" class="form-control" id="director-email">
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="billing-email" class="form-label">Email Address for Billing</label>
-                        <input type="email" class="form-control" id="billing-email">
-                    </div>
+          <div class="col-md-6 mb-3">
+            <label for="address-1" class="form-label">Address 1</label>
+            <input type="text" class="form-control" id="address-1">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="address-2" class="form-label">Address 2</label>
+            <input type="text" class="form-control" id="address-2">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="postcode" class="form-label">Postcode</label>
+            <input type="text" class="form-control" id="postcode">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="town" class="form-label">Town</label>
+            <input type="text" class="form-control" id="town">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="company-registration" class="form-label">Company Registration No.</label>
+            <input type="text" class="form-control" id="company-registration">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="phone-number" class="form-label">Business Phone</label>
+            <input type="text" class="form-control" id="business-phone">
+          </div>
+          <div class="col-md-6 d-flex flex-row align-items-center">
+            <label for="num-of-employees" class="form-label">Num of Employees</label>
+            &nbsp;
+            <input style="width:34%;height: 50%;" type="text" class="form-control" id="num-of-employees">
+            &nbsp;
+            &nbsp;
+            <label for="company-status" class="form-label">Status</label>
+            &nbsp;
+            &nbsp;
+            <select id="company-status" onchange="updateCosts()">
+              <option value="LTD">LTD</option>
+              <option value="Limited">Limited</option>
+            </select>
+          </div>
+          <h2 class="mb-4">Banking Information</h2>
+          <div class="col-md-6 mb-3">
+            <label for="account-number" class="form-label">Account Number</label>
+            <input type="text" class="form-control" id="account-number">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="sort-code" class="form-label">Sort Code</label>
+            <input type="text" class="form-control" id="sort-code">
+          </div>
+          <h2 class="mb-4">Contact Information</h2>
+          <div class="col-md-6 mb-3">
+            <label for="prename" class="form-label">Prename</label>
+            <select class="form-select" id="prename">
+              <option value="Mr">Mr</option>
+              <option value="Miss">Miss</option>
+              <option value="Mrs">Mrs</option>
+              <option value="Ms">Mrs</option>
+            </select>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="contact-name" class="form-label">Contact Name</label>
+            <input type="text" class="form-control" id="contact-name">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="position" class="form-label">Position</label>
+            <input type="text" class="form-control" id="position">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="mobile-number" class="form-label">Mobile Number</label>
+            <input type="text" class="form-control" id="mobile-number">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="director-email" class="form-label">Director's Email Address</label>
+            <input type="email" class="form-control" id="director-email">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="billing-email" class="form-label">Email Address for Billing</label>
+            <input type="email" class="form-control" id="billing-email">
+          </div>
 
-                </div>
-            </form>
         </div>
-        <!-- Product Options -->
-        <div class="options">
-            <h2>Connectivity Options</h2>
-            <div class="option-item">
-                <label for="business-internet">Business Internet:</label>
-                <select id="business-internet" onchange="updateCosts()">
-                    <option value="FTTP 300/50" data-service="50">FTTP 300/50</option>
-                    <option value="FTTP 150/50" data-service="50">FTTP 150/50</option>
-                    <option value="FTTP 500/165" data-service="55">FTTP 500/165</option>
-                    <option value="FTTP 1G/220" data-service="60">FTTP 1G/220</option>
-                    <option value="SOGEA 80/20" data-service="50">SOGEA 80/20</option>
-                    <option value="None" data-service="50">None</option>
-                </select>
-            </div>
-            <div class="option-item">
-                <label for="voice-channels">Voice Channels:</label>
-                <input type="number" id="voice-channels" value="0" min="0" onchange="updateCosts()">
-            </div>
-        </div>
+      </form>
+    </div>
+    <!-- Product Options -->
+    <div class="options">
+      <h2>Connectivity Options</h2>
+      <div class="option-item">
+        <label for="business-internet">Business Internet:</label>
+        <select id="business-internet" onchange="updateCosts()">
+          <option value="FTTP 300/50" data-service="50">FTTP 300/50</option>
+          <option value="FTTP 150/50" data-service="50">FTTP 150/50</option>
+          <option value="FTTP 500/165" data-service="55">FTTP 500/165</option>
+          <option value="FTTP 1G/220" data-service="60">FTTP 1G/220</option>
+          <option value="SOGEA 80/20" data-service="50">SOGEA 80/20</option>
+          <option value="None" data-service="50">None</option>
+        </select>
+      </div>
+      <div class="option-item">
+        <label for="voice-channels">Voice Channels:</label>
+        <input type="number" id="voice-channels" value="0" min="0" onchange="updateCosts()">
+      </div>
+    </div>
 
     <!-- Page 1 (visible by default) -->
     <div id="page1" class="page active">
-        <div class="service-grid">
-            <div class="service-item">
-                <img src="./yea.PNG" alt="Yealink W79P Rugged">
-                <p>Yealink W79P Rugged</p>
-                <input type="number" id="yealink-w79p" value="0" min="0" onchange="updateCosts()">
-            </div>
-            <div class="service-item">
-                <img src="./t54w.jpg" alt="Yealink T54">
-                <p>Yealink T54W</p>
-                <input type="number" id="yealink-t54" value="0" min="0" onchange="updateCosts()">
-            </div>
-            <div class="service-item">
-                <img src="./t57w.jpg" alt="Yealink T57">
-                <p>Yealink T57</p>
-                <input type="number" id="yealink-t57" value="0" min="0" onchange="updateCosts()">
-            </div>
-            <div class="service-item">
-                <img src="./auto attendant.PNG" alt="Auto Attendant">
-                <p>Auto Attendant</p>
-                Qty: <span id="auto-attendant">0</span>
-            </div>
-            <div class="service-item">
-                <img src="./on hold marketing.png" alt="OHM">
-                <p>OHM</p>
-                Qty: <span id="ohm">0</span>
-            </div>
-            <div class="service-item">
-                <img src="./call recording.png" alt="Call Recording">
-                <p>Call Recording</p>
-                Qty: <span id="call-recording">0</span>
-            </div>
-            <div class="service-item">
-                <img src="./system user licenece.PNG" alt="System User Licenses">
-                <p>System User Licenses</p>
-                Qty: <span id="system-user-licenses">0</span>
-            </div>
-            <div class="service-item">
-                <img src="./voicemail license.PNG" alt="Voicemail License">
-                <p>Voicemail License</p>
-                Qty: <span id="voicemail-license">0</span>
-            </div>
-            <div class="service-item">
-                <img src="./mobile connect.PNG" alt="Mobile Connect">
-                <p>Mobile Connect</p>
-                Qty: <span id="mobile-connect">0</span>
-            </div>
-            <div class="service-item">
-                <img src="./router.jpg" alt="Router">
-                <p>Router</p>
-                <input type="number" id="router" value="0" onchange="updateCosts()">
-            </div>
-            <div class="service-item">
-                <img src="./Network-Installation.jpg" alt="Network Installation">
-                <p>Network Installation</p>
-                Qty: <span id="network-installation">1</span>
-            </div>
+      <div class="service-grid">
+        <div class="service-item">
+          <img src="./yea.PNG" alt="Yealink W79P Rugged">
+          <p>Yealink W79P Rugged</p>
+          <input type="number" id="yealink-w79p" value="0" min="0" onchange="updateCosts()">
         </div>
-        <button onclick="showPage('page2')" style="height: 50%;">Next</button>
+        <div class="service-item">
+          <img src="./t54w.jpg" alt="Yealink T54">
+          <p>Yealink T54W</p>
+          <input type="number" id="yealink-t54" value="0" min="0" onchange="updateCosts()">
+        </div>
+        <div class="service-item">
+          <img src="./t57w.jpg" alt="Yealink T57">
+          <p>Yealink T57</p>
+          <input type="number" id="yealink-t57" value="0" min="0" onchange="updateCosts()">
+        </div>
+        <div class="service-item">
+          <img src="./auto attendant.PNG" alt="Auto Attendant">
+          <p>Auto Attendant</p>
+          Qty: <span id="auto-attendant">0</span>
+        </div>
+        <div class="service-item">
+          <img src="./on hold marketing.png" alt="OHM">
+          <p>OHM</p>
+          Qty: <span id="ohm">0</span>
+        </div>
+        <div class="service-item">
+          <img src="./call recording.png" alt="Call Recording">
+          <p>Call Recording</p>
+          Qty: <span id="call-recording">0</span>
+        </div>
+        <div class="service-item">
+          <img src="./system user licenece.PNG" alt="System User Licenses">
+          <p>System User Licenses</p>
+          Qty: <span id="system-user-licenses">0</span>
+        </div>
+        <div class="service-item">
+          <img src="./voicemail license.PNG" alt="Voicemail License">
+          <p>Voicemail License</p>
+          Qty: <span id="voicemail-license">0</span>
+        </div>
+        <div class="service-item">
+          <img src="./mobile connect.PNG" alt="Mobile Connect">
+          <p>Mobile Connect</p>
+          Qty: <span id="mobile-connect">0</span>
+        </div>
+        <div class="service-item">
+          <img src="./router.jpg" alt="Router">
+          <p>Router</p>
+          <input type="number" id="router" value="0" onchange="updateCosts()">
+        </div>
+        <div class="service-item">
+          <img src="./Network-Installation.jpg" alt="Network Installation">
+          <p>Network Installation</p>
+          Qty: <span id="network-installation">1</span>
+        </div>
+      </div>
+      <button onclick="showPage('page2')" style="height: 50%;">Next</button>
     </div>
 
     <!-- Page 2 (hidden by default) -->
     <div id="page2" class="page">
-        <div class="service-grid">            
-            <div class="service-item">
-                <img src="./web dev.png" alt="Web Building">
-                <p>Web Building</p>
-                <input type="number" id="webdev" value="0" min="0" onchange="updateCosts()">
-            </div>
-            <div class="service-item">
-                <img src="./os.jpg" alt="Operating System">
-                <p>Operating System</p>
-                <input type="number" id="os" value="0" min="0" onchange="updateCosts()">
-            </div>
-            <div class="service-item">
-                <img src="./desktop.jpg" alt="Desktop PCs">
-                <p>Desktop PCs</p>
-                <input type="number" id="desktop" value="0" min="0" onchange="updateCosts()">
-            </div>
-            <div class="service-item">
-                <img src="./monitor.jpg" alt="Monitor">
-                <p>Monitor</p>
-                <input type="number" id="monitor" value="0" min="0" onchange="updateCosts()">
-            </div>
-            <div class="service-item">
-                <img src="./laptop.jpg" alt="Laptops">
-                <p>Laptops</p>
-                <input type="number" id="laptop" value="0" min="0" onchange="updateCosts()">
-            </div>
-            <div class="service-item">
-                <img src="./keyboard.jpeg" alt="Keyboard">
-                <p>Keyboard</p>
-                <input type="number" id="keyboard" value="0" min="0" onchange="updateCosts()">
-            </div>
-            <div class="service-item">
-                <img src="./mouse.jpg" alt="Mouse">
-                <p>Mouse</p>
-                <input type="number" id="mouse" value="0" min="0" onchange="updateCosts()">
-            </div>
-            <div class="service-item">
-              <img src="./crm.png" alt="crm">
-              <p>Bespoke CRM User License</p>
-              <input type="number" id="crm" value="0" min="0" onchange="updateCosts()">
-          </div>
+      <div class="service-grid">
+        <div class="service-item">
+          <img src="./web dev.png" alt="Web Building">
+          <p>Web Building</p>
+          <input type="number" id="webdev" value="0" min="0" onchange="updateCosts()">
         </div>
-        <button onclick="showPage('page1')" style="height: 50%;">Previous</button>
+        <div class="service-item">
+          <img src="./os.jpg" alt="Operating System">
+          <p>Operating System</p>
+          <input type="number" id="os" value="0" min="0" onchange="updateCosts()">
+        </div>
+        <div class="service-item">
+          <img src="./desktop.jpg" alt="Desktop PCs">
+          <p>Desktop PCs</p>
+          <input type="number" id="desktop" value="0" min="0" onchange="updateCosts()">
+        </div>
+        <div class="service-item">
+          <img src="./monitor.jpg" alt="Monitor">
+          <p>Monitor</p>
+          <input type="number" id="monitor" value="0" min="0" onchange="updateCosts()">
+        </div>
+        <div class="service-item">
+          <img src="./laptop.jpg" alt="Laptops">
+          <p>Laptops</p>
+          <input type="number" id="laptop" value="0" min="0" onchange="updateCosts()">
+        </div>
+        <div class="service-item">
+          <img src="./keyboard.jpeg" alt="Keyboard">
+          <p>Keyboard</p>
+          <input type="number" id="keyboard" value="0" min="0" onchange="updateCosts()">
+        </div>
+        <div class="service-item">
+          <img src="./mouse.jpg" alt="Mouse">
+          <p>Mouse</p>
+          <input type="number" id="mouse" value="0" min="0" onchange="updateCosts()">
+        </div>
+        <div class="service-item">
+          <img src="./crm.png" alt="crm">
+          <p>Bespoke CRM User License</p>
+          <input type="number" id="crm" value="0" min="0" onchange="updateCosts()">
+        </div>
+      </div>
+      <button onclick="showPage('page1')" style="height: 50%;">Previous</button>
     </div>
-    
+
 
     <script>
-        function showPage(pageId) {
-            // Hide all pages
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
+      function showPage(pageId) {
+        // Hide all pages
+        document.querySelectorAll('.page').forEach(page => {
+          page.classList.remove('active');
+        });
 
-            // Show the selected page
-            document.getElementById(pageId).classList.add('active');
-        }
+        // Show the selected page
+        document.getElementById(pageId).classList.add('active');
+      }
     </script>
 
-        <!-- Cost Overview -->
-        <div class="cost-section">
-            <div class="cost-table">
-                <h3>Old Costs</h3>
-                <div class="cost-item">
-                    <span>Existing Call Charges</span>
-                    <span contenteditable="true" class="editable" id="old-call-charges">0.00</span>
-                </div>
-                <div class="cost-item">
-                    <span>Existing Equipment Rental</span>
-                    <span contenteditable="true" class="editable" id="old-equipment-rental">0.00</span>
-                </div>
-                <div class="cost-item">
-                    <span>Existing Service Charges</span>
-                    <span contenteditable="true" class="editable" id="old-service-charges">0.00</span>
-                </div>
-                <div class="cost-item">
-                    <span>Other Costs</span>
-                    <span contenteditable="true" class="editable" id="old-other-costs">0.00</span>
-                </div>
-                <div class="cost-item">
-                    <span>Current Mobile Costs</span>
-                    <span contenteditable="true" class="editable" id="old-mobile-costs">0.00</span>
-                </div>
-                <div class="cost-item">
-                    <span>Current Leaseline Costs</span>
-                    <span contenteditable="true" class="editable" id="old-leaseline-costs">0.00</span>
-                </div>
-                <div class="total-cost">
-                    Total Old Cost: £<span id="total-old-cost">0.00</span>
-                </div>
-            </div>
-
-            <div class="cost-table">
-                <h3>Future Costs</h3>
-                <div class="cost-item">
-                    <span>Estimated Call Charges</span>
-                    <span style="font-size: 14px;">£<span id="estimated-call-charges">0.00</span></span>
-                </div>
-                <div class="cost-item">
-                    <span>New System Rental</span>
-                    <span style="font-size: 14px;">£<span id="new-system-rental">0.00</span></span>
-                </div>
-                <div class="cost-item">
-                    <span>New Service Charges</span>
-                    <span style="font-size: 14px;">£<span id="new-service-charges">0.00</span></span>
-                </div>
-                <div class="cost-item">
-                    <span>Network Service Rebate for 18 Months</span>
-                    <span style="font-size: 14px;">£<span id="network-rebate">-250</span></span>
-                </div>
-                <div class="cost-item">
-                    <span>Estimated Mobile Charges</span>
-                    <span style="font-size: 14px;">£<span id="estimated-mobile-charges">0.00</span></span>
-                </div>
-                <div class="cost-item">
-                    <span>Lease Line</span>
-                    <span style="font-size: 14px;">£<span id="lease-line">0.00</span></span>
-                </div>
-                <div class="total-cost">
-                    Total Future Cost: £<span id="total-future-cost" style="font-size: 14px;">0.00</span>
-                </div>
-            </div>
+    <!-- Cost Overview -->
+    <div class="cost-section">
+      <div class="cost-table">
+        <h3>Old Costs</h3>
+        <div class="cost-item">
+          <span>Existing Call Charges</span>
+          <span contenteditable="true" class="editable" id="old-call-charges">0.00</span>
         </div>
-        <div class="button" id="modifyPdf">Generate Quote</div>
-        <br>
-        <br>        <br>
-        <br>        <br>
-        <br>        <br>
-        <br>        <br>
-        <br>        <br>
-        <br>        <br>
-        <br>        <br>
-        <br>        <br>
-        <br>        <br>
-        <br>
-
-        <div>
-            <label for="terminations">Terminations (£):</label>
-            <input type="number" id="terminations" value="0" min="0" onchange="updateCosts()">
+        <div class="cost-item">
+          <span>Existing Equipment Rental</span>
+          <span contenteditable="true" class="editable" id="old-equipment-rental">0.00</span>
         </div>
-        <!-- Rental Discount Section -->
-        <div class="discount-section">
-            <h3>Adjustments</h3>
-            <div class="cost-item">
-              <span>Total Costs</span>
-              <input type="number" id="adjust-total-costs" value="0" onchange="updateCosts()" class="cost-input">
-          </div>
-            <div class="cost-item">
-                <span>Adjust System Rental</span>
-                <input type="number" id="adjust-system-rental" value="0" onchange="updateCosts()" class="cost-input">
-            </div>
-            <div class="cost-item">
-                <span>Adjust Rebate</span>
-                <input type="number" id="adjust-rebate" value="0" onchange="updateCosts()" class="cost-input">
-            </div>
-            <div class="cost-item">
-                <span>Adjust New Service Charges</span>
-                <input type="number" id="adjust-service" value="0" onchange="updateCosts()" class="cost-input">
-            </div>
-            <div class="cost-item">
-                <label for="contract-term">Contract Term (Months):</label>
-                <select id="contract-term" onchange="updateCosts()">
-                    <option value="84">84 Months</option>
-					<option value="60">60 Months</option>
-                </select>
-            </div>
+        <div class="cost-item">
+          <span>Existing Service Charges</span>
+          <span contenteditable="true" class="editable" id="old-service-charges">0.00</span>
         </div>
-        <!-- Total Earnings Section -->
-        <div class="earnings-section">
-            <h3>Total Lease</h3>
-            <div class="total-cost">
-                Total Lease: £<span id="company-earnings">0.00</span>
-            </div>
+        <div class="cost-item">
+          <span>Other Costs</span>
+          <span contenteditable="true" class="editable" id="old-other-costs">0.00</span>
         </div>
+        <div class="cost-item">
+          <span>Current Mobile Costs</span>
+          <span contenteditable="true" class="editable" id="old-mobile-costs">0.00</span>
+        </div>
+        <div class="cost-item">
+          <span>Current Leaseline Costs</span>
+          <span contenteditable="true" class="editable" id="old-leaseline-costs">0.00</span>
+        </div>
+        <div class="total-cost">
+          Total Old Cost: £<span id="total-old-cost">0.00</span>
+        </div>
+      </div>
 
-        
+      <div class="cost-table">
+        <h3>Future Costs</h3>
+        <div class="cost-item">
+          <span>Estimated Call Charges</span>
+          <span style="font-size: 14px;">£<span id="estimated-call-charges">0.00</span></span>
+        </div>
+        <div class="cost-item">
+          <span>New System Rental</span>
+          <span style="font-size: 14px;">£<span id="new-system-rental">0.00</span></span>
+        </div>
+        <div class="cost-item">
+          <span>New Service Charges</span>
+          <span style="font-size: 14px;">£<span id="new-service-charges">0.00</span></span>
+        </div>
+        <div class="cost-item">
+          <span>Network Service Rebate for 18 Months</span>
+          <span style="font-size: 14px;">£<span id="network-rebate">-250</span></span>
+        </div>
+        <div class="cost-item">
+          <span>Estimated Mobile Charges</span>
+          <span style="font-size: 14px;">£<span id="estimated-mobile-charges">0.00</span></span>
+        </div>
+        <div class="cost-item">
+          <span>Lease Line</span>
+          <span style="font-size: 14px;">£<span id="lease-line">0.00</span></span>
+        </div>
+        <div class="total-cost">
+          Total Future Cost: £<span id="total-future-cost" style="font-size: 14px;">0.00</span>
+        </div>
+      </div>
+    </div>
+    <div class="button" id="modifyPdf">Generate Quote</div>
+    <div class="button-container">
+      <div class="button w-50" id="stopFormula">Stop formula</div>
+      <div class="button w-50" id="enableFormula">Enable formula</div>
+    </div>
+    <br>
+    <br> <br>
+    <br> <br>
+    <br> <br>
+    <br> <br>
+    <br> <br>
+    <br> <br>
+    <br> <br>
+    <br> <br>
+    <br> <br>
+    <br>
 
-        <script>
-            const { degrees, PDFDocument, rgb, StandardFonts } = PDFLib
-            document.getElementById('modifyPdf').addEventListener('click', async () => {
-                // Load the existing PDF
-                const existingPdfBytes = await fetch('TheContract.pdf').then(res => res.arrayBuffer());
-
-                // Load a PDFDocument from the existing PDF bytes
-                const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes);
-
-                // Embed the Helvetica font
-                const helveticaFont = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
-
-                // Get the first page of the document
-                const pages = pdfDoc.getPages();
-
-                const form = pdfDoc.getForm()
-
-                //Get Field name
-                const companyNameField = form.getTextField('CompanyName')
-                const Address1Field = form.getTextField('Address1')
-                const Address2Field = form.getTextField('Address2')
-                const PostcodeField = form.getTextField('Postcode')
-                const ContactNameField = form.getTextField('ContactName')
-                const DirectorEmailField = form.getTextField('DirectorEmail')
-                const BillingEmailField = form.getTextField('BillingEmail')
-                const CompanyRegNumField = form.getTextField('CompanyRegNum')
-                const AccountNumber = form.getTextField("AccountNum1")
-                
-                const Address = form.getTextField("Address")
-                const bbs = form.getTextField("Society")
-                const Position = form.getTextField("Position")
-                const MobNumber = form.getTextField("MobNumber")
-                const totalfcost = form.getTextField("TotalCost")
-                const estimatedCallCharges = form.getTextField("EstimatedCallCharges")
-                const newSystemRental = form.getTextField("NewSystemRental")
-                const newServiceCharges = form.getTextField("NewServiceCharge")
-                const networkServiceRebate = form.getTextField("NetworkServiceRebate")
-                const estimateMobileCharges = form.getTextField("EstimatedMobCharges")
-                const leaseLine = form.getTextField("LeaseLine")
-                const businessInternet = form.getTextField("BusinessInternet")
-                const conditions = form.getTextField("Conditions")
-                const contractLength = form.getTextField("ContractLength")
-                const minMonth = form.getTextField("MinimumMonth")
-                const businessInternetQty = form.getTextField("BusinessInternetQty")
-                const existingCallCharges = form.getTextField("ExistingCallCharges")
-                const existingEquipmentCharges = form.getTextField("ExistingEquipmentRental")
-                const existingServiceCharges = form.getTextField("ExistingServiceCharges")
-                const otherCosts = form.getTextField("OtherCosts")
-                const currentMobCosts = form.getTextField("CurrentMobCosts")
-                const currentLeaseCosts = form.getTextField("CurrentLeaseCosts")
-                const totalOldCosts = form.getTextField("OldTotalCosts")
-                const ContractLengthNum = form.getTextField("ContractLengthNum")
-                const prenameFull = form.getTextField("FullContactName")
-                const numOfEmployees = form.getTextField("NumOfEmployees")
-                const businessPhone = form.getTextField("BusinessPhone")
-                const companyStatus = form.getTextField("CompanyStatus")
-                const town = form.getTextField("Town")
-                const firstName = form.getTextField("FirstName")
-                const secondName = form.getTextField("SecondName")
-                const preName = form.getTextField("PreName")
-                const Terminations = form.getTextField("Terminations")
-
-
-                //items
-                const voiceChannelQty = form.getTextField("VoiceChannelQty")
-                const routerQty = form.getTextField("RouterQty")
-                const w79pQty = form.getTextField("W79PQty")
-
-                const T57Qty = form.getTextField("T57Qty")
-              
-                const T54Qty = form.getTextField("T54Qty")
-                const systemLic = form.getTextField("UserLicenseQty")
-                const crmLic = form.getTextField("CrmQty")
-                
-
-                const webBuilding = form.getTextField("WebBuildingQty")              
-                const operatingSystem = form.getTextField("OperatingSystem")
-                const desktopQty = form.getTextField("DesktopQty")
-                const laptop = form.getTextField("LaptopQty")
-                const monitor = form.getTextField("MonitorQty")
-                const keyboard = form.getTextField("KeyboardQty")
-                const mouse = form.getTextField("MouseQty")
-                const selectedItems = [];
-                const equipPageItems = [];
-                
-
-// Data manipulation: Adding name, description, model, and quantity
-if (document.getElementById('yealink-w79p').value > 0) {
-  selectedItems.push({ 
-    name: 'Yealink W79P', 
-    description: 'Cordless IP Phone', 
-    model: 'W79P', 
-    quantity: document.getElementById('yealink-w79p').value,
-    manufacturer: "Yealink"
-  });
-}
-if (document.getElementById('yealink-t54').value > 0) {
-  selectedItems.push({ 
-    name: 'Yealink T54', 
-    description: 'IP Phone', 
-    model: 'T54W', 
-    quantity: document.getElementById('yealink-t54').value,
-    manufacturer: "Yealink" 
-  });
-}
-if (document.getElementById('yealink-t57').value > 0) {
-  selectedItems.push({ 
-    name: 'Yealink T57', 
-    description: 'Smart Media Phone', 
-    model: 'T57W', 
-    quantity: document.getElementById('yealink-t57').value,
-    manufacturer: "Yealink"
-  });
-}
-if (document.getElementById('mobile-connect').value > 0) {
-  selectedItems.push({ 
-    name: 'Mobile Connect', 
-    description: 'Mobile Connectivity Service', 
-    model: 'Mobile Connect', 
-    quantity: document.getElementById('mobile-connect').value,
-    manufacturer: "Mobile Connect" 
-  });
-}
-if (document.getElementById('router').value > 0) {
-  selectedItems.push({ 
-    name: 'Router', 
-    description: 'Wireless Router', 
-    model: 'RTX3000', 
-    quantity: document.getElementById('router').value,
-    manufacturer: "Router" 
-  });
-}
-if (document.getElementById('auto-attendant').innerHTML > 0) {
-  selectedItems.push({ 
-    name: 'Auto Attendant', 
-    description: 'Auto Attendant', 
-    model: 'Auto Attendant', 
-    quantity: document.getElementById('auto-attendant').innerHTML,
-    manufacturer: "Auto attendant"
-  });
-}
-if (document.getElementById('ohm').innerHTML > 0) {
-  selectedItems.push({ 
-    name: 'OHM', 
-    description: 'On Hold Meeting', 
-    model: 'OHM', 
-    quantity: document.getElementById('ohm').innerHTML,
-    manufacturer: "OHM" 
-  });
-}
-if (document.getElementById('system-user-licenses').textContent > 0) {
-  selectedItems.push({ 
-    name: 'System User Licenses', 
-    description: 'System User Licenses', 
-    model: 'Licenses', 
-    quantity: document.getElementById('system-user-licenses').textContent,
-    manufacturer: "System User"
-  });
-}
-if (document.getElementById('call-recording').innerHTML > 0) {
-  selectedItems.push({ 
-    name: 'Call Recording', 
-    description: 'Call Recording', 
-    model: 'Call Recording', 
-    quantity: document.getElementById('call-recording').innerHTML,
-    manufacturer: "Call Recording"
-  });
-}
-if (document.getElementById('mobile-connect').innerHTML > 0) {
-  selectedItems.push({ 
-    name: 'Mobile Connect', 
-    description: 'Mobile Connect', 
-    model: 'Mobile', 
-    quantity: document.getElementById('mobile-connect').innerHTML,
-    manufacturer: "Mobile Connect"
-  });
-}
-  if (document.getElementById('voicemail-license').innerHTML > 0) {
-  selectedItems.push({ 
-    name: 'Voicemail', 
-    description: 'Voicemail License', 
-    model: 'Voicemail', 
-    quantity: document.getElementById('voicemail-license').innerHTML,
-    manufacturer: "Voicemail"
-  });
-  if (document.getElementById('network-installation').innerHTML > 0) {
-  selectedItems.push({ 
-    name: 'Network', 
-    description: 'Onsite Network Installation', 
-    model: 'Install', 
-    quantity: document.getElementById('network-installation').innerHTML,
-    manufacturer: "Onsite"
-  });
-  if (document.getElementById('webdev').value > 0) {
-  selectedItems.push({ 
-    name: 'Web Building', 
-    description: 'Web Building', 
-    model: 'Cloud', 
-    quantity: document.getElementById('webdev').value,
-    manufacturer: "Web building"
-  });
-}
-if (document.getElementById('os').value > 0) {
-  selectedItems.push({ 
-    name: 'Operating System', 
-    description: 'Windows Operating System', 
-    model: 'Windows', 
-    quantity: document.getElementById('os').value,
-    manufacturer: "Microsoft" 
-  });
-}
-if (document.getElementById('desktop').value > 0) {
-  selectedItems.push({ 
-    name: 'Desktop PCs', 
-    description: 'Optiplex 7010 MT Desktop PC - Intel Core i5-13500', 
-    model: 'Desktop', 
-    quantity: document.getElementById('desktop').value,
-    manufacturer: "Dell" 
-  });
-}
-if (document.getElementById('laptop').value > 0) {
-  selectedItems.push({ 
-    name: 'Laptop', 
-    description: 'HP 250 G9 15.6 Inch Laptop - Intel Core i5-1235U', 
-    model: 'Laptop', 
-    quantity: document.getElementById('laptop').value,
-    manufacturer: "Dell" 
-  });
-}
-if (document.getElementById('monitor').value > 0) {
-  selectedItems.push({ 
-    name: 'Monitor', 
-    description: 'Dell 24 Inch Full HD Business Monitor', 
-    model: 'Monitor', 
-    quantity: document.getElementById('monitor').value,
-    manufacturer: "Dell" 
-  });
-}
-if (document.getElementById('keyboard').value > 0) {
-  selectedItems.push({ 
-    name: 'Keyboard', 
-    description: 'Dell Wired Keyboard', 
-    model: 'Keyboard', 
-    quantity: document.getElementById('keyboard').value,
-    manufacturer: "Dell"
-  });
-}
-  if (document.getElementById('mouse').value > 0) {
-  selectedItems.push({ 
-    name: 'Mouse', 
-    description: 'Dell Wired Mouse', 
-    model: 'Mouse', 
-    quantity: document.getElementById('mouse').value,
-    manufacturer: "Dell"
-  });
-}
-if (document.getElementById('crm').value > 0) {
-  selectedItems.push({ 
-    name: 'CRM', 
-    description: 'Bespoke CRM user License', 
-    model: 'CRM', 
-    quantity: document.getElementById('crm').value,
-    manufacturer: "InfinetSolutions"
-  });
-}
-}}
-
-const configEquipmentString = selectedItems.map(item => `${item.name}: ${item.quantity}`).join(', ');
-
-const checkBox = form.createCheckBox('newCheckBox')
-
-
-const tempPage = pages[3];
-const sopPage = pages[9];
-const equipPage = pages[12];
-
-let startX = 50;
-let startY = 317;
-let newStartX = 50;
-let newStartY = 317;
-const rowHeight = 11.7;
-const rowHeights = 17.5;
-
-
-if(document.getElementById("contract-term").value == 84)
-{
-    equipPage.drawText("Monthly term 1 + 83", {
-    x: 455,
-    y: 200,
-    size: 6,
-    color: rgb(0,0,0)
-});
-}
-else
-{
-    equipPage.drawText("Monthly term 1 + 59", {
-    x: 455,
-    y: 200,
-    size: 6,
-    color: rgb(0,0,0)
-});
-}
-
-equipPage.drawText("Monthly rental £" + document.getElementById("new-system-rental").textContent , {
-    x: 455,
-    y: 180,
-    size: 6,
-    color: rgb(0,0,0)
-})
-
-
-selectedItems.forEach((item, index) => {
-  const currentY = startY - index * rowHeight;
-  const currentyY    = startY - index * rowHeights;
-  const newCurrentY = newStartY -index * rowHeights;
-  console.log(selectedItems.length);
+    <div>
+      <label for="terminations">Terminations (£):</label>
+      <input type="number" id="terminations" value="0" min="0" onchange="updateCosts()">
+    </div>
+    <!-- Rental Discount Section -->
+    <div class="discount-section">
+      <h3>Adjustments</h3>
+      <div class="cost-item">
+        <span>Total Costs</span>
+        <input type="number" id="adjust-total-costs" value="0" onchange="updateCosts()" class="cost-input">
+      </div>
+      <div class="cost-item">
+        <span>Adjust System Rental</span>
+        <input type="number" id="adjust-system-rental" value="0" onchange="updateCosts()" class="cost-input">
+      </div>
+      <div class="cost-item">
+        <span>Adjust Rebate</span>
+        <input type="number" id="adjust-rebate" value="0" onchange="updateCosts()" class="cost-input">
+      </div>
+      <div class="cost-item">
+        <span>Adjust New Service Charges</span>
+        <input type="number" id="adjust-service" value="0" onchange="updateCosts()" class="cost-input">
+      </div>
+      <div class="cost-item">
+        <label for="contract-term">Contract Term (Months):</label>
+        <select id="contract-term" onchange="updateCosts()">
+          <option value="84">84 Months</option>
+          <option value="60">60 Months</option>
+        </select>
+      </div>
+    </div>
+    <!-- Total Earnings Section -->
+    <div class="earnings-section">
+      <h3>Total Lease</h3>
+      <div class="total-cost">
+        Total Lease: £<span id="company-earnings">0.00</span>
+      </div>
+    </div>
 
 
 
-  if(item,index < 15)
-  {
-    sopPage.drawText(item.quantity, {
-    x: startX - 5,
-    y: currentY + 235,
-    size: 6,
-    color: rgb(0,0,0)
-  });
-  sopPage.drawText(item.description, {
-    x: startX + 10,
-    y: currentY + 235,
-    size: 6,
-    color: rgb(0,0,0)
-  })
+    <script>
+      const { degrees, PDFDocument, rgb, StandardFonts } = PDFLib
 
-  }else{
-    sopPage.drawText(item.quantity, {
-    x: startX + 175,
-    y: startY - (index -15) * rowHeights + 230,
-    size: 6,
-    color: rgb(0,0,0)
-  });
-  sopPage.drawText(item.description, {
-    x: startX + 190,
-    y: startY - (index -15) * rowHeights + 230,
-    size: 6,
-    color: rgb(0,0,0)
-  });
-  };
-  
+      document.getElementById("stopFormula").addEventListener("click", function () {
+      window.updateCosts = window.alternativeCosts; // Replace function
+      console.log("Switched to alternativeCosts()");
+      });
 
-  tempPage.drawText(item.description, {
-    x: startX + 178,
-    y: currentY,
-    size: 6,
-    color: rgb(0, 0, 0),
-  });
+      document.getElementById("enableFormula").addEventListener("click", function () {
+        window.updateCosts = originalUpdateCosts;
+        console.log("Switched back to updateCosts()");
+      });    
+      document.getElementById('modifyPdf').addEventListener('click', async () => {
 
-  tempPage.drawText(item.model, {
-    x: startX + 120,
-    y: currentY,
-    size: 6,
-    color: rgb(0, 0, 0),
-  });
+        // Load the existing PDF
+        const existingPdfBytes = await fetch('TheContract.pdf').then(res => res.arrayBuffer());
 
+        // Load a PDFDocument from the existing PDF bytes
+        const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes);
 
-  tempPage.drawText(item.quantity, {
-    x: startX,
-    y: currentY,
-    size: 6,
-    color: rgb(0, 0, 0),
-  });
-  tempPage.drawText(item.manufacturer, {
-    x: startX + 45,
-    y: currentY,
-    size: 6,
-    color: rgb(0, 0, 0),
-  });
-  checkBox.addToPage(tempPage,{
-    x: startX + 405,
-    y: currentY - 1,
-    height: 7,
-    width: 10,   
-  });
-  checkBox.check();
+        // Embed the Helvetica font
+        const helveticaFont = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
 
+        // Get the first page of the document
+        const pages = pdfDoc.getPages();
 
-  if(item,index < 6)
-  {
-    equipPage.drawText(item.name, {
-        x: startX + 260,
-        y: currentyY + 300,
-        size: 3,
-        color: rgb(0,0,0)
-    });
-    equipPage.drawText(item.quantity, {
-        x: startX + 355,
-        y: currentyY + 300,
-        size: 3,
-        color: rgb(0,0,0)
-    })
+        const form = pdfDoc.getForm()
 
-  }else{
-    equipPage.drawText(item.name, {
-        x: startX + 400,
-        y: startY - (index -3) * rowHeights + 360,
-        size: 6,
-        color: rgb(0,0,0)
-    });
-    equipPage.drawText(item.quantity, {
-        x: startX + 510,
-        y: startY - (index -3) * rowHeights + 360,
-        size: 6,
-        color: rgb(0,0,0)
-    })
-  }
-  
-  if(item,index < 7)
-  {
-  equipPage.drawText(item.name, {
-    x: startX + 260,
-    y: currentyY - 33,
-    size: 6,
-    color: rgb(0,0,0)
-  });
-  equipPage.drawText(item.quantity, {
-    x: startX + 360,
-    y: currentyY - 33,
-    size: 6,
-    color: rgb(0,0,0)
-  })
-  } else { 
-  equipPage.drawText(item.name, {
-    
-    x: startX + 407,
-    y: startY - (index -7) * rowHeights  - 33,
-    size: 6,
-    color: rgb(0,0,0)
-  });
-  equipPage.drawText(item.quantity, {
-    x: startX + 490,
-    y: startY - (index -7) * rowHeights  - 33,
-    size: 6,
-    color: rgb(0,0,0)
-  });}
-});
+        //Get Field name
+        const companyNameField = form.getTextField('CompanyName')
+        const Address1Field = form.getTextField('Address1')
+        const Address2Field = form.getTextField('Address2')
+        const PostcodeField = form.getTextField('Postcode')
+        const ContactNameField = form.getTextField('ContactName')
+        const DirectorEmailField = form.getTextField('DirectorEmail')
+        const BillingEmailField = form.getTextField('BillingEmail')
+        const CompanyRegNumField = form.getTextField('CompanyRegNum')
+        const AccountNumber = form.getTextField("AccountNum1")
+
+        const Address = form.getTextField("Address")
+        const bbs = form.getTextField("Society")
+        const Position = form.getTextField("Position")
+        const MobNumber = form.getTextField("MobNumber")
+        const totalfcost = form.getTextField("TotalCost")
+        const estimatedCallCharges = form.getTextField("EstimatedCallCharges")
+        const newSystemRental = form.getTextField("NewSystemRental")
+        const newServiceCharges = form.getTextField("NewServiceCharge")
+        const networkServiceRebate = form.getTextField("NetworkServiceRebate")
+        const estimateMobileCharges = form.getTextField("EstimatedMobCharges")
+        const leaseLine = form.getTextField("LeaseLine")
+        const businessInternet = form.getTextField("BusinessInternet")
+        const conditions = form.getTextField("Conditions")
+        const contractLength = form.getTextField("ContractLength")
+        const minMonth = form.getTextField("MinimumMonth")
+        const businessInternetQty = form.getTextField("BusinessInternetQty")
+        const existingCallCharges = form.getTextField("ExistingCallCharges")
+        const existingEquipmentCharges = form.getTextField("ExistingEquipmentRental")
+        const existingServiceCharges = form.getTextField("ExistingServiceCharges")
+        const otherCosts = form.getTextField("OtherCosts")
+        const currentMobCosts = form.getTextField("CurrentMobCosts")
+        const currentLeaseCosts = form.getTextField("CurrentLeaseCosts")
+        const totalOldCosts = form.getTextField("OldTotalCosts")
+        const ContractLengthNum = form.getTextField("ContractLengthNum")
+        const prenameFull = form.getTextField("FullContactName")
+        const numOfEmployees = form.getTextField("NumOfEmployees")
+        const businessPhone = form.getTextField("BusinessPhone")
+        const companyStatus = form.getTextField("CompanyStatus")
+        const town = form.getTextField("Town")
+        const firstName = form.getTextField("FirstName")
+        const secondName = form.getTextField("SecondName")
+        const preName = form.getTextField("PreName")
+        const Terminations = form.getTextField("Terminations")
 
 
-            //Set Text Value
-            companyNameField.setText(document.getElementById('company-name').value)
-            Address1Field.setText(document.getElementById('address-1').value)
-            Address2Field.setText(document.getElementById('address-2').value)
-            PostcodeField.setText(document.getElementById('postcode').value)
-            ContactNameField.setText(document.getElementById('contact-name').value)
-            DirectorEmailField.setText(document.getElementById('director-email').value)
-            BillingEmailField.setText(document.getElementById('billing-email').value)
-            CompanyRegNumField.setText(document.getElementById('company-registration').value)
-            Address.setText(document.getElementById('address-1').value + ", " + document.getElementById('address-2').value)
-            AccountNumber.setText(document.getElementById('account-number').value)
-            
-            bbs.setText("Bank/Building Society")
-            Position.setText(document.getElementById('position').value)
-            MobNumber.setText(document.getElementById('mobile-number').value)
-            totalfcost.setText(document.getElementById('total-future-cost').textContent)
-            estimateMobileCharges.setText(document.getElementById('estimated-call-charges').textContent)
-            newSystemRental.setText(document.getElementById('new-system-rental').textContent)
-            newServiceCharges.setText(document.getElementById('new-service-charges').textContent)
-            networkServiceRebate.setText(document.getElementById('network-rebate').textContent.replace(/-/g,'£'))
-            estimateMobileCharges.setText(document.getElementById('estimated-mobile-charges').textContent)
-            leaseLine.setText(document.getElementById("lease-line").textContent)
-            businessInternet.setText(document.getElementById("business-internet").value)
-            sortCodeValue = document.getElementById('sort-code').value
-            accountNumberValue = document.getElementById("account-number").value
-            voiceChannelQty.setText(document.getElementById("voice-channels").value)
-            contractLength.setText(document.getElementById("contract-term").value)
-            conditions.setText("Infinet Solutions LTD agress with " + document.getElementById('company-name').value + " that the equipment specified above shall be rented to you by Infinet Solutions LTD or a third party finance provider ('the hirer') for the total price of £" + document.getElementById('new-system-rental').textContent + " plus Vat followed by 83 monthly installments of £" + document.getElementById('new-system-rental').textContent + " Infinet Solutions LTD will assist " + document.getElementById('company-name').value + "  with its application for 3rd party finance to facilitate the monthly payments of £" + document.getElementById('new-system-rental').textContent + "  plus VAT and shall arrange for to " + document.getElementById('company-name').value + "  into a rental agreement with the hirer")
-            existingCallCharges.setText(document.getElementById("old-call-charges").innerHTML)
-            existingEquipmentCharges.setText(document.getElementById("old-equipment-rental").innerHTML)
-            existingServiceCharges.setText(document.getElementById("old-service-charges").innerHTML)
-            otherCosts.setText(document.getElementById("old-other-costs").innerHTML)
-            currentMobCosts.setText(document.getElementById("old-mobile-costs").innerHTML)
-            currentLeaseCosts.setText(document.getElementById("old-leaseline-costs").innerHTML)
-            totalOldCosts.setText(document.getElementById("total-old-cost").innerHTML)
-            ContractLengthNum.setText(document.getElementById("contract-term").value + " months")
-            numOfEmployees.setText(document.getElementById("num-of-employees").innerHTML)
-            businessPhone.setText(document.getElementById("business-phone").value)
-            town.setText(document.getElementById("town").value)
-            preName.setText(document.getElementById("prename").value)
-            Terminations.setText(document.getElementById("terminations").value)
-            companyStatus.setText(document.getElementById("company-status").value)
+        //items
+        const voiceChannelQty = form.getTextField("VoiceChannelQty")
+        const routerQty = form.getTextField("RouterQty")
+        const w79pQty = form.getTextField("W79PQty")
+
+        const T57Qty = form.getTextField("T57Qty")
+
+        const T54Qty = form.getTextField("T54Qty")
+        const systemLic = form.getTextField("UserLicenseQty")
+        const crmLic = form.getTextField("CrmQty")
 
 
-            //IT
-
-            webBuilding.setText(document.getElementById("webdev").value)
-            operatingSystem.setText(document.getElementById("os").value)
-            desktopQty.setText(document.getElementById("desktop").value)
-            laptop.setText(document.getElementById("laptop").value)
-            monitor.setText(document.getElementById("monitor").value)
-            keyboard.setText(document.getElementById("keyboard").value)
-            mouse.setText(document.getElementById("mouse").value)
-            crmLic.setText(document.getElementById("crm").value)
- 
-            
-            console.log(document.getElementById("contact-name").value)
-            let fullName = document.getElementById("contact-name").value
-            let nameParts = fullName.split(" ")
-            firstName.setText(nameParts[0])
-            secondName.setText(nameParts[1])
-            
-
-            prenameFull.setText(document.getElementById("prename").value + " " + document.getElementById("contact-name").value)
-            
-
-            businessInternetQty.setText("1")
-
-            form.getCheckBox('Check Box15').check();
-
-            
+        const webBuilding = form.getTextField("WebBuildingQty")
+        const operatingSystem = form.getTextField("OperatingSystem")
+        const desktopQty = form.getTextField("DesktopQty")
+        const laptop = form.getTextField("LaptopQty")
+        const monitor = form.getTextField("MonitorQty")
+        const keyboard = form.getTextField("KeyboardQty")
+        const mouse = form.getTextField("MouseQty")
+        const selectedItems = [];
+        const equipPageItems = [];
 
 
-            for (let i = 0; i < 6; i++) {
-                const sortcode = form.getTextField("SortCode" + [i + 1])
-                sortcode.setText(sortCodeValue[i] || '');
-            }
-
-            for (let i = 0; i < 8; i++) {
-                const accountNumber = form.getTextField("AccountNum" + [i + 1])
-                accountNumber.setText(accountNumberValue[i] || '');
-            }
-
-            if (document.getElementById("contract-term").value == 84) {
-                contractLength.setText("EIGHTY FOUR");
-                minMonth.setText("EIGHTY THREE");
-
-
-            } else {
-                contractLength.setText("SIXTY");
-                minMonth.setText("FIFTY NINE");
-            }
-
-            routerQty.setText(document.getElementById("router").value)
-            w79pQty.setText(document.getElementById("yealink-w79p").value)
-
-            T57Qty.setText(document.getElementById("yealink-t57").value)
-            T54Qty.setText(document.getElementById("yealink-t54").value)
-            systemLic.setText(document.getElementById("system-user-licenses").textContent)
-
-            // Serialize the PDFDocument to bytes (a Uint8Array)
-            const pdfBytes = await pdfDoc.save();
-
-            // Create a Blob from the PDF bytes
-            const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-
-            // Create a link element
-            const link = document.createElement('a');
-            link.href = window.URL.createObjectURL(blob);
-            link.download = Date.now() + '.pdf';
-
-            // Trigger the download
-            link.click();
+        // Data manipulation: Adding name, description, model, and quantity
+        if (document.getElementById('yealink-w79p').value > 0) {
+          selectedItems.push({
+            name: 'Yealink W79P',
+            description: 'Cordless IP Phone',
+            model: 'W79P',
+            quantity: document.getElementById('yealink-w79p').value,
+            manufacturer: "Yealink"
+          });
+        }
+        if (document.getElementById('yealink-t54').value > 0) {
+          selectedItems.push({
+            name: 'Yealink T54',
+            description: 'IP Phone',
+            model: 'T54W',
+            quantity: document.getElementById('yealink-t54').value,
+            manufacturer: "Yealink"
+          });
+        }
+        if (document.getElementById('yealink-t57').value > 0) {
+          selectedItems.push({
+            name: 'Yealink T57',
+            description: 'Smart Media Phone',
+            model: 'T57W',
+            quantity: document.getElementById('yealink-t57').value,
+            manufacturer: "Yealink"
+          });
+        }
+        if (document.getElementById('mobile-connect').value > 0) {
+          selectedItems.push({
+            name: 'Mobile Connect',
+            description: 'Mobile Connectivity Service',
+            model: 'Mobile Connect',
+            quantity: document.getElementById('mobile-connect').value,
+            manufacturer: "Mobile Connect"
+          });
+        }
+        if (document.getElementById('router').value > 0) {
+          selectedItems.push({
+            name: 'Router',
+            description: 'Wireless Router',
+            model: 'RTX3000',
+            quantity: document.getElementById('router').value,
+            manufacturer: "Router"
+          });
+        }
+        if (document.getElementById('auto-attendant').innerHTML > 0) {
+          selectedItems.push({
+            name: 'Auto Attendant',
+            description: 'Auto Attendant',
+            model: 'Auto Attendant',
+            quantity: document.getElementById('auto-attendant').innerHTML,
+            manufacturer: "Auto attendant"
+          });
+        }
+        if (document.getElementById('ohm').innerHTML > 0) {
+          selectedItems.push({
+            name: 'OHM',
+            description: 'On Hold Meeting',
+            model: 'OHM',
+            quantity: document.getElementById('ohm').innerHTML,
+            manufacturer: "OHM"
+          });
+        }
+        if (document.getElementById('system-user-licenses').textContent > 0) {
+          selectedItems.push({
+            name: 'System User Licenses',
+            description: 'System User Licenses',
+            model: 'Licenses',
+            quantity: document.getElementById('system-user-licenses').textContent,
+            manufacturer: "System User"
+          });
+        }
+        if (document.getElementById('call-recording').innerHTML > 0) {
+          selectedItems.push({
+            name: 'Call Recording',
+            description: 'Call Recording',
+            model: 'Call Recording',
+            quantity: document.getElementById('call-recording').innerHTML,
+            manufacturer: "Call Recording"
+          });
+        }
+        if (document.getElementById('mobile-connect').innerHTML > 0) {
+          selectedItems.push({
+            name: 'Mobile Connect',
+            description: 'Mobile Connect',
+            model: 'Mobile',
+            quantity: document.getElementById('mobile-connect').innerHTML,
+            manufacturer: "Mobile Connect"
+          });
+        }
+        if (document.getElementById('voicemail-license').innerHTML > 0) {
+          selectedItems.push({
+            name: 'Voicemail',
+            description: 'Voicemail License',
+            model: 'Voicemail',
+            quantity: document.getElementById('voicemail-license').innerHTML,
+            manufacturer: "Voicemail"
+          });
+          if (document.getElementById('network-installation').innerHTML > 0) {
+            selectedItems.push({
+              name: 'Network',
+              description: 'Onsite Network Installation',
+              model: 'Install',
+              quantity: document.getElementById('network-installation').innerHTML,
+              manufacturer: "Onsite"
             });
-        </script>
-        <script src="three.js"></script>
+            if (document.getElementById('webdev').value > 0) {
+              selectedItems.push({
+                name: 'Web Building',
+                description: 'Web Building',
+                model: 'Cloud',
+                quantity: document.getElementById('webdev').value,
+                manufacturer: "Web building"
+              });
+            }
+            if (document.getElementById('os').value > 0) {
+              selectedItems.push({
+                name: 'Operating System',
+                description: 'Windows Operating System',
+                model: 'Windows',
+                quantity: document.getElementById('os').value,
+                manufacturer: "Microsoft"
+              });
+            }
+            if (document.getElementById('desktop').value > 0) {
+              selectedItems.push({
+                name: 'Desktop PCs',
+                description: 'Optiplex 7010 MT Desktop PC - Intel Core i5-13500',
+                model: 'Desktop',
+                quantity: document.getElementById('desktop').value,
+                manufacturer: "Dell"
+              });
+            }
+            if (document.getElementById('laptop').value > 0) {
+              selectedItems.push({
+                name: 'Laptop',
+                description: 'HP 250 G9 15.6 Inch Laptop - Intel Core i5-1235U',
+                model: 'Laptop',
+                quantity: document.getElementById('laptop').value,
+                manufacturer: "Dell"
+              });
+            }
+            if (document.getElementById('monitor').value > 0) {
+              selectedItems.push({
+                name: 'Monitor',
+                description: 'Dell 24 Inch Full HD Business Monitor',
+                model: 'Monitor',
+                quantity: document.getElementById('monitor').value,
+                manufacturer: "Dell"
+              });
+            }
+            if (document.getElementById('keyboard').value > 0) {
+              selectedItems.push({
+                name: 'Keyboard',
+                description: 'Dell Wired Keyboard',
+                model: 'Keyboard',
+                quantity: document.getElementById('keyboard').value,
+                manufacturer: "Dell"
+              });
+            }
+            if (document.getElementById('mouse').value > 0) {
+              selectedItems.push({
+                name: 'Mouse',
+                description: 'Dell Wired Mouse',
+                model: 'Mouse',
+                quantity: document.getElementById('mouse').value,
+                manufacturer: "Dell"
+              });
+            }
+            if (document.getElementById('crm').value > 0) {
+              selectedItems.push({
+                name: 'CRM',
+                description: 'Bespoke CRM user License',
+                model: 'CRM',
+                quantity: document.getElementById('crm').value,
+                manufacturer: "InfinetSolutions"
+              });
+            }
+          }
+        }
+
+        const configEquipmentString = selectedItems.map(item => `${item.name}: ${item.quantity}`).join(', ');
+
+        const checkBox = form.createCheckBox('newCheckBox')
+
+
+        const tempPage = pages[3];
+        const sopPage = pages[9];
+        const equipPage = pages[12];
+
+        let startX = 50;
+        let startY = 317;
+        let newStartX = 50;
+        let newStartY = 317;
+        const rowHeight = 11.7;
+        const rowHeights = 17.5;
+
+
+        if (document.getElementById("contract-term").value == 84) {
+          equipPage.drawText("Monthly term 1 + 83", {
+            x: 455,
+            y: 200,
+            size: 6,
+            color: rgb(0, 0, 0)
+          });
+        }
+        else {
+          equipPage.drawText("Monthly term 1 + 59", {
+            x: 455,
+            y: 200,
+            size: 6,
+            color: rgb(0, 0, 0)
+          });
+        }
+
+        equipPage.drawText("Monthly rental £" + document.getElementById("new-system-rental").textContent, {
+          x: 455,
+          y: 180,
+          size: 6,
+          color: rgb(0, 0, 0)
+        })
+
+
+        selectedItems.forEach((item, index) => {
+          const currentY = startY - index * rowHeight;
+          const currentyY = startY - index * rowHeights;
+          const newCurrentY = newStartY - index * rowHeights;
+          console.log(selectedItems.length);
+
+
+
+          if (item, index < 15) {
+            sopPage.drawText(item.quantity, {
+              x: startX - 5,
+              y: currentY + 235,
+              size: 6,
+              color: rgb(0, 0, 0)
+            });
+            sopPage.drawText(item.description, {
+              x: startX + 10,
+              y: currentY + 235,
+              size: 6,
+              color: rgb(0, 0, 0)
+            })
+
+          } else {
+            sopPage.drawText(item.quantity, {
+              x: startX + 175,
+              y: startY - (index - 15) * rowHeights + 230,
+              size: 6,
+              color: rgb(0, 0, 0)
+            });
+            sopPage.drawText(item.description, {
+              x: startX + 190,
+              y: startY - (index - 15) * rowHeights + 230,
+              size: 6,
+              color: rgb(0, 0, 0)
+            });
+          };
+
+
+          tempPage.drawText(item.description, {
+            x: startX + 178,
+            y: currentY,
+            size: 6,
+            color: rgb(0, 0, 0),
+          });
+
+          tempPage.drawText(item.model, {
+            x: startX + 120,
+            y: currentY,
+            size: 6,
+            color: rgb(0, 0, 0),
+          });
+
+
+          tempPage.drawText(item.quantity, {
+            x: startX,
+            y: currentY,
+            size: 6,
+            color: rgb(0, 0, 0),
+          });
+          tempPage.drawText(item.manufacturer, {
+            x: startX + 45,
+            y: currentY,
+            size: 6,
+            color: rgb(0, 0, 0),
+          });
+          checkBox.addToPage(tempPage, {
+            x: startX + 405,
+            y: currentY - 1,
+            height: 7,
+            width: 10,
+          });
+          checkBox.check();
+
+
+          if (item, index < 6) {
+            equipPage.drawText(item.name, {
+              x: startX + 260,
+              y: currentyY + 300,
+              size: 3,
+              color: rgb(0, 0, 0)
+            });
+            equipPage.drawText(item.quantity, {
+              x: startX + 355,
+              y: currentyY + 300,
+              size: 3,
+              color: rgb(0, 0, 0)
+            })
+
+          } else {
+            equipPage.drawText(item.name, {
+              x: startX + 400,
+              y: startY - (index - 3) * rowHeights + 360,
+              size: 6,
+              color: rgb(0, 0, 0)
+            });
+            equipPage.drawText(item.quantity, {
+              x: startX + 510,
+              y: startY - (index - 3) * rowHeights + 360,
+              size: 6,
+              color: rgb(0, 0, 0)
+            })
+          }
+
+          if (item, index < 7) {
+            equipPage.drawText(item.name, {
+              x: startX + 260,
+              y: currentyY - 33,
+              size: 6,
+              color: rgb(0, 0, 0)
+            });
+            equipPage.drawText(item.quantity, {
+              x: startX + 360,
+              y: currentyY - 33,
+              size: 6,
+              color: rgb(0, 0, 0)
+            })
+          } else {
+            equipPage.drawText(item.name, {
+
+              x: startX + 407,
+              y: startY - (index - 7) * rowHeights - 33,
+              size: 6,
+              color: rgb(0, 0, 0)
+            });
+            equipPage.drawText(item.quantity, {
+              x: startX + 490,
+              y: startY - (index - 7) * rowHeights - 33,
+              size: 6,
+              color: rgb(0, 0, 0)
+            });
+          }
+        });
+
+
+        //Set Text Value
+        companyNameField.setText(document.getElementById('company-name').value)
+        Address1Field.setText(document.getElementById('address-1').value)
+        Address2Field.setText(document.getElementById('address-2').value)
+        PostcodeField.setText(document.getElementById('postcode').value)
+        ContactNameField.setText(document.getElementById('contact-name').value)
+        DirectorEmailField.setText(document.getElementById('director-email').value)
+        BillingEmailField.setText(document.getElementById('billing-email').value)
+        CompanyRegNumField.setText(document.getElementById('company-registration').value)
+        Address.setText(document.getElementById('address-1').value + ", " + document.getElementById('address-2').value)
+        AccountNumber.setText(document.getElementById('account-number').value)
+
+        bbs.setText("Bank/Building Society")
+        Position.setText(document.getElementById('position').value)
+        MobNumber.setText(document.getElementById('mobile-number').value)
+        totalfcost.setText(document.getElementById('total-future-cost').textContent)
+        estimateMobileCharges.setText(document.getElementById('estimated-call-charges').textContent)
+        newSystemRental.setText(document.getElementById('new-system-rental').textContent)
+        newServiceCharges.setText(document.getElementById('new-service-charges').textContent)
+        networkServiceRebate.setText(document.getElementById('network-rebate').textContent.replace(/-/g, '£'))
+        estimateMobileCharges.setText(document.getElementById('estimated-mobile-charges').textContent)
+        leaseLine.setText(document.getElementById("lease-line").textContent)
+        businessInternet.setText(document.getElementById("business-internet").value)
+        sortCodeValue = document.getElementById('sort-code').value
+        accountNumberValue = document.getElementById("account-number").value
+        voiceChannelQty.setText(document.getElementById("voice-channels").value)
+        contractLength.setText(document.getElementById("contract-term").value)
+        conditions.setText("Infinet Solutions LTD agress with " + document.getElementById('company-name').value + " that the equipment specified above shall be rented to you by Infinet Solutions LTD or a third party finance provider ('the hirer') for the total price of £" + document.getElementById('new-system-rental').textContent + " plus Vat followed by 83 monthly installments of £" + document.getElementById('new-system-rental').textContent + " Infinet Solutions LTD will assist " + document.getElementById('company-name').value + "  with its application for 3rd party finance to facilitate the monthly payments of £" + document.getElementById('new-system-rental').textContent + "  plus VAT and shall arrange for to " + document.getElementById('company-name').value + "  into a rental agreement with the hirer")
+        existingCallCharges.setText(document.getElementById("old-call-charges").innerHTML)
+        existingEquipmentCharges.setText(document.getElementById("old-equipment-rental").innerHTML)
+        existingServiceCharges.setText(document.getElementById("old-service-charges").innerHTML)
+        otherCosts.setText(document.getElementById("old-other-costs").innerHTML)
+        currentMobCosts.setText(document.getElementById("old-mobile-costs").innerHTML)
+        currentLeaseCosts.setText(document.getElementById("old-leaseline-costs").innerHTML)
+        totalOldCosts.setText(document.getElementById("total-old-cost").innerHTML)
+        ContractLengthNum.setText(document.getElementById("contract-term").value + " months")
+        numOfEmployees.setText(document.getElementById("num-of-employees").innerHTML)
+        businessPhone.setText(document.getElementById("business-phone").value)
+        town.setText(document.getElementById("town").value)
+        preName.setText(document.getElementById("prename").value)
+        Terminations.setText(document.getElementById("terminations").value)
+        companyStatus.setText(document.getElementById("company-status").value)
+
+
+        //IT
+
+        webBuilding.setText(document.getElementById("webdev").value)
+        operatingSystem.setText(document.getElementById("os").value)
+        desktopQty.setText(document.getElementById("desktop").value)
+        laptop.setText(document.getElementById("laptop").value)
+        monitor.setText(document.getElementById("monitor").value)
+        keyboard.setText(document.getElementById("keyboard").value)
+        mouse.setText(document.getElementById("mouse").value)
+        crmLic.setText(document.getElementById("crm").value)
+
+
+        console.log(document.getElementById("contact-name").value)
+        let fullName = document.getElementById("contact-name").value
+        let nameParts = fullName.split(" ")
+        firstName.setText(nameParts[0])
+        secondName.setText(nameParts[1])
+
+
+        prenameFull.setText(document.getElementById("prename").value + " " + document.getElementById("contact-name").value)
+
+
+        businessInternetQty.setText("1")
+
+        form.getCheckBox('Check Box15').check();
+
+
+
+
+        for (let i = 0; i < 6; i++) {
+          const sortcode = form.getTextField("SortCode" + [i + 1])
+          sortcode.setText(sortCodeValue[i] || '');
+        }
+
+        for (let i = 0; i < 8; i++) {
+          const accountNumber = form.getTextField("AccountNum" + [i + 1])
+          accountNumber.setText(accountNumberValue[i] || '');
+        }
+
+        if (document.getElementById("contract-term").value == 84) {
+          contractLength.setText("EIGHTY FOUR");
+          minMonth.setText("EIGHTY THREE");
+
+
+        } else {
+          contractLength.setText("SIXTY");
+          minMonth.setText("FIFTY NINE");
+        }
+
+        routerQty.setText(document.getElementById("router").value)
+        w79pQty.setText(document.getElementById("yealink-w79p").value)
+
+        T57Qty.setText(document.getElementById("yealink-t57").value)
+        T54Qty.setText(document.getElementById("yealink-t54").value)
+        systemLic.setText(document.getElementById("system-user-licenses").textContent)
+
+        // Serialize the PDFDocument to bytes (a Uint8Array)
+        const pdfBytes = await pdfDoc.save();
+
+        // Create a Blob from the PDF bytes
+        const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+
+        // Create a link element
+        const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        link.download = Date.now() + '.pdf';
+
+        // Trigger the download
+        link.click();
+      });
+
+    </script>
+    <script src="three.js"></script>
 </body>
 
 </html>
