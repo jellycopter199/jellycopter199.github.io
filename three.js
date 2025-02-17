@@ -1,4 +1,4 @@
-function updateCosts() {
+window.updateCosts = function () {
     const yealinkW79PQty = parseInt(document.getElementById('yealink-w79p').value) || 0;
     const yealinkT54Qty = parseInt(document.getElementById('yealink-t54').value) || 0;
     const yealinkT57Qty = parseInt(document.getElementById('yealink-t57').value) || 0;
@@ -63,7 +63,7 @@ function updateCosts() {
     const totalFutureCost = typedTotalCosts;
     const newServiceCharges = totalFutureCost - newSystemRental + 250;
 
-    // Update display values
+    
     document.getElementById('new-system-rental').textContent = `${newSystemRental.toFixed(2)}`;
     newServiceChargesElement.textContent = `${newServiceCharges.toFixed(2)}`;
 
@@ -71,10 +71,42 @@ function updateCosts() {
     document.getElementById('system-user-licenses').textContent = `${totalPhones}`;
 }
 
-// Event listeners to update costs
+
+window.alternativeCosts = function () {
+    const typedTotalCosts = parseFloat(document.getElementById('adjust-total-costs').value);
+    document.getElementById('total-future-cost').textContent = typedTotalCosts;
+
+    const typedRebate = parseFloat(document.getElementById('adjust-rebate').value);
+    document.getElementById('network-rebate').textContent = typedRebate;
+
+    const typedServiceCharge = document.getElementById('adjust-service').value;
+    document.getElementById('new-service-charges').textContent = typedServiceCharge;
+
+    const typedRental = parseFloat(document.getElementById('adjust-system-rental').value);
+    document.getElementById('new-system-rental').textContent = typedRental;
+}
+
+// Initial binding of the default function to the onchange event
 document.querySelectorAll('input, select').forEach(element => {
-    element.addEventListener('change', updateCosts);
+    element.addEventListener('onchange', window.updateCosts);
 });
 
-// Initial call to update costs on load
-updateCosts();
+// Event listener for "Stop formula" button - switch to alternativeCosts
+document.getElementById("stopFormula").addEventListener("click", function () {
+    // Replace the updateCosts function with alternativeCosts for all inputs dynamically
+    document.querySelectorAll('input, select').forEach(element => {
+        element.removeEventListener('onchange', window.updateCosts);
+        element.addEventListener('onchange', window.alternativeCosts);
+    });
+    console.log("Switched to alternativeCosts() bitxhs");
+});
+
+// Event listener for "Enable formula" button - switch back to updateCosts
+document.getElementById("enableFormula").addEventListener("click", function () {
+    // Replace the alternativeCosts function with updateCosts for all inputs dynamically
+    document.querySelectorAll('input, select').forEach(element => {
+        element.removeEventListener('onchange', window.alternativeCosts);
+        element.addEventListener('onchange', window.updateCosts);
+    });
+    console.log("Switched back to updateCosts()");
+});
