@@ -53,6 +53,7 @@
   <div class="container" id="nipper">
     <img src="./company logo.png" alt="Company Logo" class="logo">
     <h1>Product Quotation</h1>
+    <button id="toggleCustomerDetails" class="btn btn-primary mb-3">Hide Customer Details</button>
 
     <!-- Customer Information -->
     <div class="container mt-4" id="test">
@@ -413,14 +414,27 @@
       const { degrees, PDFDocument, rgb, StandardFonts } = PDFLib
 
       document.getElementById("stopFormula").addEventListener("click", function () {
-      window.updateCosts = window.alternativeCosts; // Replace function
-      console.log("Switched to alternativeCosts()");
+        window.updateCosts = window.alternativeCosts; // Replace function
+        console.log("Switched to alternativeCosts()");
+      });
+
+      const toggleButton = document.getElementById('toggleCustomerDetails');
+      const customerDetails = document.getElementById('test');
+
+      toggleButton.addEventListener('click', () => {
+        if (customerDetails.style.display === 'none') {
+          customerDetails.style.display = '';
+          toggleButton.textContent = 'Hide Customer Details';
+        } else {
+          customerDetails.style.display = 'none';
+          toggleButton.textContent = 'Show Customer Details';
+        }
       });
 
       document.getElementById("enableFormula").addEventListener("click", function () {
         window.updateCosts = originalUpdateCosts;
         console.log("Switched back to updateCosts()");
-      });    
+      });
       document.getElementById('modifyPdf').addEventListener('click', async () => {
 
         // Load the existing PDF
