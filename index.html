@@ -521,7 +521,8 @@
         const monitor = form.getTextField("MonitorQty")
         const keyboard = form.getTextField("KeyboardQty")
         const mouse = form.getTextField("MouseQty")
-        const cctv = form.getTextField("CCTVQty")
+        const cctv = form.getTextField("cctvqty")
+        
         const selectedItems = [];
         const equipPageItems = [];
 
@@ -948,7 +949,8 @@
         keyboard.setText(document.getElementById("keyboard").value)
         mouse.setText(document.getElementById("mouse").value)
         crmLic.setText(document.getElementById("crm").value)
-        cctv.setText(document.getElementById("cctv").value)
+        cctv.setText(document.getElementById('cctv').value)
+        
 
 
         console.log(document.getElementById("contact-name").value)
