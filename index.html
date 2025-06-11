@@ -271,6 +271,11 @@
           <p>Bespoke CRM User License</p>
           <input type="number" id="crm" value="0" min="0" onchange="updateCosts()">
         </div>
+                <div class="service-item">
+          <img src="./cctv.jpg" alt="cctv">
+          <p>CCTV</p>
+          <input type="number" id="cctv" value="0" min="0" onchange="updateCosts()">
+        </div>
       </div>
       <button onclick="showPage('page1')" style="height: 50%;">Previous</button>
     </div>
@@ -516,6 +521,7 @@
         const monitor = form.getTextField("MonitorQty")
         const keyboard = form.getTextField("KeyboardQty")
         const mouse = form.getTextField("MouseQty")
+        const cctv = form.getTextField("CCTVQty")
         const selectedItems = [];
         const equipPageItems = [];
 
@@ -698,6 +704,16 @@
                 quantity: document.getElementById('crm').value,
                 manufacturer: "InfinetSolutions"
               });
+            }
+            if(document.getElementById('cctv').value >0) 
+            {
+              selectedItems.push({
+                name: "CCTV",
+                description: "CCTV System",
+                model: "",
+                quantity: document.getElementById('cctv').value,
+                manufacturer: ""
+              })
             }
           }
         }
@@ -932,6 +948,7 @@
         keyboard.setText(document.getElementById("keyboard").value)
         mouse.setText(document.getElementById("mouse").value)
         crmLic.setText(document.getElementById("crm").value)
+        cctv.setText(document.getElementById("cctv").value)
 
 
         console.log(document.getElementById("contact-name").value)
