@@ -29,6 +29,7 @@ window.updateCosts = function () {
     
     const phone60 = 17;
     const phone84 = 12;
+    const computer60 = 17;
 
     
     const totalPhones = yealinkW79PQty + yealinkT54Qty + yealinkT57Qty;
