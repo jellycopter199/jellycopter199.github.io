@@ -271,7 +271,7 @@
           <p>Bespoke CRM User License</p>
           <input type="number" id="crm" value="0" min="0" onchange="updateCosts()">
         </div>
-                <div class="service-item">
+        <div class="service-item">
           <img src="./cctv.jpg" alt="cctv">
           <p>CCTV</p>
           <input type="number" id="cctv" value="0" min="0" onchange="updateCosts()">
@@ -467,7 +467,7 @@
         const CompanyRegNumField = form.getTextField('CompanyRegNum')
         const AccountNumber = form.getTextField("AccountNum1")
 
-        const Address = form.getTextField("Address")
+
         const bbs = form.getTextField("Society")
         const Position = form.getTextField("Position")
         const MobNumber = form.getTextField("MobNumber")
@@ -480,8 +480,8 @@
         const leaseLine = form.getTextField("LeaseLine")
         const businessInternet = form.getTextField("BusinessInternet")
         const conditions = form.getTextField("Conditions")
-        const contractLength = form.getTextField("ContractLength")
-        const minMonth = form.getTextField("MinimumMonth")
+
+
         const businessInternetQty = form.getTextField("BusinessInternetQty")
         const existingCallCharges = form.getTextField("ExistingCallCharges")
         const existingEquipmentCharges = form.getTextField("ExistingEquipmentRental")
@@ -490,7 +490,7 @@
         const currentMobCosts = form.getTextField("CurrentMobCosts")
         const currentLeaseCosts = form.getTextField("CurrentLeaseCosts")
         const totalOldCosts = form.getTextField("OldTotalCosts")
-        const ContractLengthNum = form.getTextField("ContractLengthNum")
+
         const prenameFull = form.getTextField("FullContactName")
         const numOfEmployees = form.getTextField("NumOfEmployees")
         const businessPhone = form.getTextField("BusinessPhone")
@@ -499,7 +499,7 @@
         const firstName = form.getTextField("FirstName")
         const secondName = form.getTextField("SecondName")
         const preName = form.getTextField("PreName")
-        const Terminations = form.getTextField("Terminations")
+
 
 
         //items
@@ -522,7 +522,7 @@
         const keyboard = form.getTextField("KeyboardQty")
         const mouse = form.getTextField("MouseQty")
         const cctv = form.getTextField("cctvqty")
-        
+
         const selectedItems = [];
         const equipPageItems = [];
 
@@ -706,8 +706,7 @@
                 manufacturer: "InfinetSolutions"
               });
             }
-            if(document.getElementById('cctv').value >0) 
-            {
+            if (document.getElementById('cctv').value > 0) {
               selectedItems.push({
                 name: "CCTV",
                 description: "CCTV System",
@@ -724,9 +723,75 @@
         const checkBox = form.createCheckBox('newCheckBox')
 
 
-        const tempPage = pages[3];
-        const sopPage = pages[9];
-        const equipPage = pages[12];
+
+
+        //Set Text Value
+        companyNameField.setText(document.getElementById('company-name').value)
+        Address1Field.setText(document.getElementById('address-1').value)
+        Address2Field.setText(document.getElementById('address-2').value)
+        PostcodeField.setText(document.getElementById('postcode').value)
+        ContactNameField.setText(document.getElementById('contact-name').value)
+        DirectorEmailField.setText(document.getElementById('director-email').value)
+        BillingEmailField.setText(document.getElementById('billing-email').value)
+        CompanyRegNumField.setText(document.getElementById('company-registration').value)
+        AccountNumber.setText(document.getElementById('account-number').value)
+
+        bbs.setText("Bank/Building Society")
+        Position.setText(document.getElementById('position').value)
+        MobNumber.setText(document.getElementById('mobile-number').value)
+        totalfcost.setText(document.getElementById('total-future-cost').textContent)
+        estimateMobileCharges.setText(document.getElementById('estimated-call-charges').textContent)
+        newSystemRental.setText(document.getElementById('new-system-rental').textContent)
+        newServiceCharges.setText(document.getElementById('new-service-charges').textContent)
+        networkServiceRebate.setText(document.getElementById('network-rebate').textContent.replace(/-/g, '£'))
+        estimateMobileCharges.setText(document.getElementById('estimated-mobile-charges').textContent)
+        leaseLine.setText(document.getElementById("lease-line").textContent)
+        businessInternet.setText(document.getElementById("business-internet").value)
+        sortCodeValue = document.getElementById('sort-code').value
+        accountNumberValue = document.getElementById("account-number").value
+        voiceChannelQty.setText(document.getElementById("voice-channels").value)
+        conditions.setText("Infinet Solutions LTD agress with " + document.getElementById('company-name').value + " that the equipment specified above shall be rented to you by Infinet Solutions LTD or a third party finance provider ('the hirer') for the total price of £" + document.getElementById('new-system-rental').textContent + " plus Vat followed by 83 monthly installments of £" + document.getElementById('new-system-rental').textContent + " Infinet Solutions LTD will assist " + document.getElementById('company-name').value + "  with its application for 3rd party finance to facilitate the monthly payments of £" + document.getElementById('new-system-rental').textContent + "  plus VAT and shall arrange for to " + document.getElementById('company-name').value + "  into a rental agreement with the hirer")
+        existingCallCharges.setText(document.getElementById("old-call-charges").innerHTML)
+        existingEquipmentCharges.setText(document.getElementById("old-equipment-rental").innerHTML)
+        existingServiceCharges.setText(document.getElementById("old-service-charges").innerHTML)
+        otherCosts.setText(document.getElementById("old-other-costs").innerHTML)
+        currentMobCosts.setText(document.getElementById("old-mobile-costs").innerHTML)
+        currentLeaseCosts.setText(document.getElementById("old-leaseline-costs").innerHTML)
+        totalOldCosts.setText(document.getElementById("total-old-cost").innerHTML)
+        numOfEmployees.setText(document.getElementById("num-of-employees").innerHTML)
+        businessPhone.setText(document.getElementById("business-phone").value)
+        town.setText(document.getElementById("town").value)
+        preName.setText(document.getElementById("prename").value)
+        companyStatus.setText(document.getElementById("company-status").value)
+
+
+        //IT
+
+        webBuilding.setText(document.getElementById("webdev").value)
+        operatingSystem.setText(document.getElementById("os").value)
+        desktopQty.setText(document.getElementById("desktop").value)
+        laptop.setText(document.getElementById("laptop").value)
+        monitor.setText(document.getElementById("monitor").value)
+        keyboard.setText(document.getElementById("keyboard").value)
+        mouse.setText(document.getElementById("mouse").value)
+        crmLic.setText(document.getElementById("crm").value)
+        cctv.setText(document.getElementById('cctv').value)
+
+
+
+        console.log(document.getElementById("contact-name").value)
+        let fullName = document.getElementById("contact-name").value
+        let nameParts = fullName.split(" ")
+        firstName.setText(nameParts[0])
+        secondName.setText(nameParts[1])
+
+
+        prenameFull.setText(document.getElementById("prename").value + " " + document.getElementById("contact-name").value)
+
+
+        businessInternetQty.setText("1")
+
+        const equipPage = pages[4];
 
         let startX = 50;
         let startY = 317;
@@ -766,73 +831,6 @@
           const currentyY = startY - index * rowHeights;
           const newCurrentY = newStartY - index * rowHeights;
           console.log(selectedItems.length);
-
-
-
-          if (item, index < 15) {
-            sopPage.drawText(item.quantity, {
-              x: startX - 5,
-              y: currentY + 235,
-              size: 6,
-              color: rgb(0, 0, 0)
-            });
-            sopPage.drawText(item.description, {
-              x: startX + 10,
-              y: currentY + 235,
-              size: 6,
-              color: rgb(0, 0, 0)
-            })
-
-          } else {
-            sopPage.drawText(item.quantity, {
-              x: startX + 175,
-              y: startY - (index - 15) * rowHeights + 230,
-              size: 6,
-              color: rgb(0, 0, 0)
-            });
-            sopPage.drawText(item.description, {
-              x: startX + 190,
-              y: startY - (index - 15) * rowHeights + 230,
-              size: 6,
-              color: rgb(0, 0, 0)
-            });
-          };
-
-
-          tempPage.drawText(item.description, {
-            x: startX + 178,
-            y: currentY,
-            size: 6,
-            color: rgb(0, 0, 0),
-          });
-
-          tempPage.drawText(item.model, {
-            x: startX + 120,
-            y: currentY,
-            size: 6,
-            color: rgb(0, 0, 0),
-          });
-
-
-          tempPage.drawText(item.quantity, {
-            x: startX,
-            y: currentY,
-            size: 6,
-            color: rgb(0, 0, 0),
-          });
-          tempPage.drawText(item.manufacturer, {
-            x: startX + 45,
-            y: currentY,
-            size: 6,
-            color: rgb(0, 0, 0),
-          });
-          checkBox.addToPage(tempPage, {
-            x: startX + 405,
-            y: currentY - 1,
-            height: 7,
-            width: 10,
-          });
-          checkBox.check();
 
 
           if (item, index < 6) {
@@ -895,81 +893,6 @@
         });
 
 
-        //Set Text Value
-        companyNameField.setText(document.getElementById('company-name').value)
-        Address1Field.setText(document.getElementById('address-1').value)
-        Address2Field.setText(document.getElementById('address-2').value)
-        PostcodeField.setText(document.getElementById('postcode').value)
-        ContactNameField.setText(document.getElementById('contact-name').value)
-        DirectorEmailField.setText(document.getElementById('director-email').value)
-        BillingEmailField.setText(document.getElementById('billing-email').value)
-        CompanyRegNumField.setText(document.getElementById('company-registration').value)
-        Address.setText(document.getElementById('address-1').value + ", " + document.getElementById('address-2').value)
-        AccountNumber.setText(document.getElementById('account-number').value)
-
-        bbs.setText("Bank/Building Society")
-        Position.setText(document.getElementById('position').value)
-        MobNumber.setText(document.getElementById('mobile-number').value)
-        totalfcost.setText(document.getElementById('total-future-cost').textContent)
-        estimateMobileCharges.setText(document.getElementById('estimated-call-charges').textContent)
-        newSystemRental.setText(document.getElementById('new-system-rental').textContent)
-        newServiceCharges.setText(document.getElementById('new-service-charges').textContent)
-        networkServiceRebate.setText(document.getElementById('network-rebate').textContent.replace(/-/g, '£'))
-        estimateMobileCharges.setText(document.getElementById('estimated-mobile-charges').textContent)
-        leaseLine.setText(document.getElementById("lease-line").textContent)
-        businessInternet.setText(document.getElementById("business-internet").value)
-        sortCodeValue = document.getElementById('sort-code').value
-        accountNumberValue = document.getElementById("account-number").value
-        voiceChannelQty.setText(document.getElementById("voice-channels").value)
-        contractLength.setText(document.getElementById("contract-term").value)
-        conditions.setText("Infinet Solutions LTD agress with " + document.getElementById('company-name').value + " that the equipment specified above shall be rented to you by Infinet Solutions LTD or a third party finance provider ('the hirer') for the total price of £" + document.getElementById('new-system-rental').textContent + " plus Vat followed by 83 monthly installments of £" + document.getElementById('new-system-rental').textContent + " Infinet Solutions LTD will assist " + document.getElementById('company-name').value + "  with its application for 3rd party finance to facilitate the monthly payments of £" + document.getElementById('new-system-rental').textContent + "  plus VAT and shall arrange for to " + document.getElementById('company-name').value + "  into a rental agreement with the hirer")
-        existingCallCharges.setText(document.getElementById("old-call-charges").innerHTML)
-        existingEquipmentCharges.setText(document.getElementById("old-equipment-rental").innerHTML)
-        existingServiceCharges.setText(document.getElementById("old-service-charges").innerHTML)
-        otherCosts.setText(document.getElementById("old-other-costs").innerHTML)
-        currentMobCosts.setText(document.getElementById("old-mobile-costs").innerHTML)
-        currentLeaseCosts.setText(document.getElementById("old-leaseline-costs").innerHTML)
-        totalOldCosts.setText(document.getElementById("total-old-cost").innerHTML)
-        ContractLengthNum.setText(document.getElementById("contract-term").value + " months")
-        numOfEmployees.setText(document.getElementById("num-of-employees").innerHTML)
-        businessPhone.setText(document.getElementById("business-phone").value)
-        town.setText(document.getElementById("town").value)
-        preName.setText(document.getElementById("prename").value)
-        Terminations.setText(document.getElementById("terminations").value)
-        companyStatus.setText(document.getElementById("company-status").value)
-
-
-        //IT
-
-        webBuilding.setText(document.getElementById("webdev").value)
-        operatingSystem.setText(document.getElementById("os").value)
-        desktopQty.setText(document.getElementById("desktop").value)
-        laptop.setText(document.getElementById("laptop").value)
-        monitor.setText(document.getElementById("monitor").value)
-        keyboard.setText(document.getElementById("keyboard").value)
-        mouse.setText(document.getElementById("mouse").value)
-        crmLic.setText(document.getElementById("crm").value)
-        cctv.setText(document.getElementById('cctv').value)
-        
-
-
-        console.log(document.getElementById("contact-name").value)
-        let fullName = document.getElementById("contact-name").value
-        let nameParts = fullName.split(" ")
-        firstName.setText(nameParts[0])
-        secondName.setText(nameParts[1])
-
-
-        prenameFull.setText(document.getElementById("prename").value + " " + document.getElementById("contact-name").value)
-
-
-        businessInternetQty.setText("1")
-
-        form.getCheckBox('Check Box15').check();
-
-
-
-
         for (let i = 0; i < 6; i++) {
           const sortcode = form.getTextField("SortCode" + [i + 1])
           sortcode.setText(sortCodeValue[i] || '');
@@ -978,16 +901,6 @@
         for (let i = 0; i < 8; i++) {
           const accountNumber = form.getTextField("AccountNum" + [i + 1])
           accountNumber.setText(accountNumberValue[i] || '');
-        }
-
-        if (document.getElementById("contract-term").value == 84) {
-          contractLength.setText("EIGHTY FOUR");
-          minMonth.setText("EIGHTY THREE");
-
-
-        } else {
-          contractLength.setText("SIXTY");
-          minMonth.setText("FIFTY NINE");
         }
 
         routerQty.setText(document.getElementById("router").value)
