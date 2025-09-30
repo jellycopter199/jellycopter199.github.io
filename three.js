@@ -27,8 +27,8 @@ window.updateCosts = function () {
     const contractTerm = parseInt(document.getElementById('contract-term').value);
 
     
-    const phone60 = 30;
-    const phone84 = 21;
+    const phone60 = 25;
+    const phone84 = 17;
     const computer60 = 17;
 
     
