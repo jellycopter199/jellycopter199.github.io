@@ -54,7 +54,6 @@
     <img src="/images/company logo.png" alt="Company Logo" class="logo">
     <h1>Product Quotation</h1>
     <button id="toggleCustomerDetails" class="btn btn-primary mb-3">Hide Customer Details</button>
-    
 
     <!-- Customer Information -->
     <div class="container mt-4" id="test">
@@ -415,14 +414,15 @@
     </div>
 
 
+
     <script>
-      function uint8ToBase64(uint8Array) {
-        let binary = '';
-        for (let i = 0; i < uint8Array.length; i++) {
-          binary += String.fromCharCode(uint8Array[i]);
-        }
-        return btoa(binary);
-      }
+      const { degrees, PDFDocument, rgb, StandardFonts } = PDFLib
+
+      document.getElementById("stopFormula").addEventListener("click", function () {
+        window.updateCosts = window.alternativeCosts; // Replace function
+        console.log("Switched to alternativeCosts()");
+      });
+
       const toggleButton = document.getElementById('toggleCustomerDetails');
       const customerDetails = document.getElementById('test');
 
@@ -436,53 +436,14 @@
         }
       });
 
-      async function uploadAndSend(pdfBytes) {
-        try {
-          const base64 = uint8ToBase64(pdfBytes);
-          console.log("uploadAndSend Function");
-
-          // 1. Upload to Vercel Blob
-          const uploadRes = await fetch('/api/upload', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              name: `my-document-${Date.now()}.pdf`,
-              contentBase64: base64
-            })
-          });
-
-          const uploadData = await uploadRes.json();
-          const blobUrl = uploadData.url;
-          console.log("Uploaded to:", blobUrl);
-
-          // 2. Send the blob URL to DocuSign
-          const docusignRes = await fetch('/api/send-to-docusign', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              recipientEmail: 'jellycopter199@gmail.com',
-              recipientName: 'Jelly Copter',
-              pdfUrl: blobUrl
-            })
-          });
-
-          const docusignData = await docusignRes.json();
-          console.log("DocuSign response:", docusignData);
-        } catch (err) {
-          console.error("Error in upload and send:", err);
-          alert("Something went wrong. Check console.");
-        }
-      }
-      const { degrees, PDFDocument, rgb, StandardFonts } = PDFLib
-
+      document.getElementById("enableFormula").addEventListener("click", function () {
+        window.updateCosts = originalUpdateCosts;
+        console.log("Switched back to updateCosts()");
+      });
       document.getElementById('modifyPdf').addEventListener('click', async () => {
-        console.log("Starting this function");
+
         // Load the existing PDF
-        const existingPdfBytes = await fetch('UpdatedContact.pdf').then(res => res.arrayBuffer());
+        const existingPdfBytes = await fetch('TheContract.pdf').then(res => res.arrayBuffer());
 
         // Load a PDFDocument from the existing PDF bytes
         const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes);
@@ -802,7 +763,7 @@
         town.setText(document.getElementById("town").value)
         preName.setText(document.getElementById("prename").value)
         companyStatus.setText(document.getElementById("company-status").value)
-        ContractLengthNum.setText(document.getElementById("contract-term").value + " months")
+         ContractLengthNum.setText(document.getElementById("contract-term").value + " months")
 
 
         //IT
@@ -950,81 +911,19 @@
         T54Qty.setText(document.getElementById("yealink-t54").value)
         systemLic.setText(document.getElementById("system-user-licenses").textContent)
 
-
+        // Serialize the PDFDocument to bytes (a Uint8Array)
         const pdfBytes = await pdfDoc.save();
 
-        const contactName = document.getElementById("contact-name").value
-        const directorsEmail = document.getElementById("director-email").value
+        // Create a Blob from the PDF bytes
+        const blob = new Blob([pdfBytes], { type: 'application/pdf' });
 
-
-
+        // Create a link element
         const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
         link.download = Date.now() + '.pdf';
+
+        // Trigger the download
         link.click();
-
-        try {
-          const sendingToast = Toastify({
-            text: `Sending document to DocuSign...`,
-            duration: 2000,
-            backgroundColor: "linear-gradient(to right, #6c7a89, #95a5a6)",
-            gravity: "top",
-            position: "right"
-          });
-          sendingToast.showToast();
-
-          const base64 = uint8ToBase64(pdfBytes);
-
-          const response = await fetch('/api/send-to-docusign', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              recipientEmail: directorsEmail,
-              recipientName: contactName,
-              pdfBase64: base64,
-            }),
-          });
-          const contentType = response.headers.get('content-type');
-
-          let result;
-          if (contentType && contentType.includes('application/json')) {
-            result = await response.json();
-          } else {
-            const text = await response.text();
-            throw new Error(`Expected JSON but got: ${text}`);
-          }
-
-          if (response.ok) {
-            Toastify({
-              text: "Document sent successfully!",
-              duration: 3000,
-              backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
-              gravity: "top",
-              position: "right",
-            }).showToast();
-          } else {
-            Toastify({
-              text: `Error: ${result.message || 'Failed to send document'}`,
-              duration: 3000,
-              backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
-              gravity: "top",
-              position: "right",
-            }).showToast();
-          }
-
-          console.log('DocuSign response:', result);
-
-        } catch (error) {
-          console.error('Error in upload or sending to DocuSign:', error);
-          Toastify({
-            text: `Failed to send document: ${error.message}`,
-            duration: 4000,
-            backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
-            gravity: "top",
-            position: "right",
-          }).showToast();
-        }
       });
 
     </script>
