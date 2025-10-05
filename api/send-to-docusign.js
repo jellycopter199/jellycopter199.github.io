@@ -6,36 +6,36 @@ export default async function handler(req, res) {
     }
 
     try {
-        const DOCUSIGN_CLIENT_ID = '46496f9a-9f32-481b-b153-0a089da9d914';
-        const DOCUSIGN_USER_ID = '279c44cc-b7c2-48c2-8a02-aa685e6e049d';
-        const DOCUSIGN_ACCOUNT_ID = 'c375a6fc-028d-4a93-b771-9ff0519f6f77';
+        const DOCUSIGN_CLIENT_ID = '46496f9a-9f32-481b-b153-0a089da9d9';
+        const DOCUSIGN_USER_ID = '7f62b302-6232-4d1e-8e48-a3a3e23e39ed';
+        const DOCUSIGN_ACCOUNT_ID = 'e4f601e4-0343-4c4a-bcd0-4bf769f85294';
 
         const DOCUSIGN_PRIVATE_KEY = `-----BEGIN RSA PRIVATE KEY-----
-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
+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
 -----END RSA PRIVATE KEY-----`;
 
         const { recipientEmail, recipientName, pdfBase64 } = req.body;
@@ -77,7 +77,7 @@ sL4gOiBGZ/zfoUsLeRpsZdxsH2aik+bgVN5B4gHaEj21lramwaN6/g==
 
         const jwt = `${unsignedJWT}.${signature}`;
 
-        const tokenRes = await fetch('https://account-d.docusign.com/oauth/token', {
+        const tokenRes = await fetch('https://account.docusign.com/oauth/token', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -95,7 +95,7 @@ sL4gOiBGZ/zfoUsLeRpsZdxsH2aik+bgVN5B4gHaEj21lramwaN6/g==
         }
 
         const accessToken = tokenData.access_token;
-        const baseURI = tokenData.base_uri || 'https://demo.docusign.net';
+        const baseURI = tokenData.base_uri || 'https://eu.docusign.net';
 
         const envelope = {
             emailSubject: 'Please sign this document',
